@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F2EE;color:#16181D;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#16181D;text-decoration:none}a:hover{color:#E8452C}
+*{box-sizing:border-box}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#F3F2EE">
+  <div style="position:sticky;top:0;z-index:10;background:#F3F2EE;border-bottom:1px solid rgba(22,24,29,.14)">
+    <div style="max-width:1320px;margin:0 auto;padding:14px clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase">
+      <span>PixelMetrics · Identity exploration</span>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="Direction%20A%20-%20Resolution.dc.html" style="color:#E8452C">A · Resolution</a>
+        <a href="Direction%20B%20-%20One%20Pixel%20On.dc.html">B · One Pixel On</a>
+        <a href="Direction%20C%20-%20Channels.dc.html">C · Channels</a>
+        <a href="Direction%20D%20-%20Live%20Resolution.dc.html">D · Live Resolution</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+
+    <!-- Title -->
+    <div style="padding:clamp(56px,9vw,128px) 0 clamp(40px,6vw,80px);display:flex;flex-wrap:wrap;gap:40px;align-items:flex-end;justify-content:space-between">
+      <div style="flex:1 1 560px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:28px;color:#6B6860">Direction A</div>
+        <h1 style="margin:0;font-size:clamp(64px,11vw,160px);line-height:.86;font-weight:600;font-variation-settings:'wdth' 118;letter-spacing:-.045em">Resolution<span style="display:inline-block;width:.14em;height:.14em;background:#E8452C;margin-left:.04em"></span></h1>
+        <p style="margin:32px 0 0;font-size:clamp(22px,2.4vw,32px);line-height:1.2;font-weight:400;font-variation-settings:'wdth' 100;letter-spacing:-.015em;max-width:24ch;text-wrap:pretty">Detail goes exactly where the work is, and nowhere else.</p>
+      </div>
+      <div style="flex:0 1 360px;font-size:16px;line-height:1.55;color:#3A3C42;text-wrap:pretty">A quadtree is how computers decide where detail belongs: split a square in four, but only where there is information. PixelMetrics works the same way, it doesn’t redesign a whole business, it resolves the parts that leak time.</div>
+    </div>
+
+    <!-- 01 Concept -->
+    <div style="border-top:1px solid #16181D;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">01</span>
+        <span style="font-size:15px;font-weight:600">Central idea</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column;gap:40px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px">
+          <div style="display:flex;flex-direction:column;gap:10px"><canvas ref="{{ qt }}" data-root="full" data-min="400" data-k="0.01" data-fx="0.97" data-fy="0.03" style="width:100%;aspect-ratio:1;display:block;background:#F3F2EE;outline:1px solid rgba(22,24,29,.2)"></canvas><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860">1 · a business</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><canvas ref="{{ qt }}" data-root="full" data-min="0.5" data-maxd="1" data-k="0.01" data-fx="0.97" data-fy="0.03" style="width:100%;aspect-ratio:1;display:block;outline:1px solid rgba(22,24,29,.2)"></canvas><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860">4 · its functions</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><canvas ref="{{ qt }}" data-root="full" data-min="0.5" data-maxd="2" data-k="0.01" data-fx="0.97" data-fy="0.03" style="width:100%;aspect-ratio:1;display:block;outline:1px solid rgba(22,24,29,.2)"></canvas><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860">16 · its workflows</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px"><canvas ref="{{ qt }}" data-root="full" data-min="0.5" data-maxd="5" data-k="0.01" data-fx="0.97" data-fy="0.03" style="width:100%;aspect-ratio:1;display:block;outline:1px solid rgba(22,24,29,.2)"></canvas><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">1px · the drain we fix</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 40px;font-size:16px;line-height:1.55;color:#3A3C42">
+          <p style="margin:0;text-wrap:pretty"><strong style="color:#16181D;font-weight:600">Pixel + Metrics.</strong> The name already holds the idea: the pixel as a unit of measure. Every surface in this identity is measured in squares that halve, 1, 4, 16, 64, until they reach a single pixel.</p>
+          <p style="margin:0;text-wrap:pretty"><strong style="color:#16181D;font-weight:600">Why it’s theirs.</strong> Operators don’t add detail everywhere; they zoom into the one step that wastes hours. “We find the drain” becomes a visual law: resolution is spent only where it matters, and the deepest cell is always marked in vermilion.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 Logo -->
+    <div style="border-top:1px solid #16181D;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">02</span>
+        <span style="font-size:15px;font-weight:600">Logo &amp; wordmark</span>
+        <span style="font-size:14px;line-height:1.5;color:#6B6860;margin-top:10px;max-width:30ch">The Zoom mark: one square, subdivided three times toward the top-right, ending in a single vermilion cell. The logo is a picture of the method.</span>
+      </div>
+      <div style="flex:3 1 640px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+        <div style="grid-column:1/-1;background:#fff;min-height:320px;display:flex;align-items:center;justify-content:center;padding:48px;position:relative">
+          <div style="display:flex;align-items:center;gap:clamp(16px,2.4vw,28px)">
+            <div style="position:relative;width:clamp(64px,8vw,104px);aspect-ratio:1;flex:none">
+              <div style="position:absolute;left:0;top:0;width:48.387%;height:48.387%;background:#16181D"></div>
+              <div style="position:absolute;left:0;top:51.613%;width:48.387%;height:48.387%;background:#16181D"></div>
+              <div style="position:absolute;left:51.613%;top:51.613%;width:48.387%;height:48.387%;background:#16181D"></div>
+              <div style="position:absolute;left:51.613%;top:0;width:22.581%;height:22.581%;background:#16181D"></div>
+              <div style="position:absolute;left:51.613%;top:25.806%;width:22.581%;height:22.581%;background:#16181D"></div>
+              <div style="position:absolute;left:77.419%;top:25.806%;width:22.581%;height:22.581%;background:#16181D"></div>
+              <div style="position:absolute;left:77.419%;top:0;width:9.677%;height:9.677%;background:#16181D"></div>
+              <div style="position:absolute;left:77.419%;top:12.903%;width:9.677%;height:9.677%;background:#16181D"></div>
+              <div style="position:absolute;left:90.323%;top:12.903%;width:9.677%;height:9.677%;background:#16181D"></div>
+              <div style="position:absolute;left:90.323%;top:0;width:9.677%;height:9.677%;background:#E8452C"></div>
+            </div>
+            <span style="font-size:clamp(40px,6.4vw,84px);font-weight:600;font-variation-settings:'wdth' 112;letter-spacing:-.04em;line-height:1">PixelMetrics</span>
+          </div>
+          <span style="position:absolute;left:20px;bottom:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860">Primary lockup · Archivo 600, width 112, −40 tracking</span>
+        </div>
+        <div style="background:#16181D;min-height:220px;display:flex;align-items:center;justify-content:center;position:relative">
+          <div style="position:relative;width:96px;aspect-ratio:1">
+            <div style="position:absolute;left:0;top:0;width:48.387%;height:48.387%;background:#F3F2EE"></div>
+            <div style="position:absolute;left:0;top:51.613%;width:48.387%;height:48.387%;background:#F3F2EE"></div>
+            <div style="position:absolute;left:51.613%;top:51.613%;width:48.387%;height:48.387%;background:#F3F2EE"></div>
+            <div style="position:absolute;left:51.613%;top:0;width:22.581%;height:22.581%;background:#F3F2EE"></div>
+            <div style="position:absolute;left:51.613%;top:25.806%;width:22.581%;height:22.581%;background:#F3F2EE"></div>
+            <div style="position:absolute;left:77.419%;top:25.806%;width:22.581%;height:22.581%;background:#F3F2EE"></div>
+            <div style="position:absolute;left:77.419%;top:0;width:9.677%;height:9.677%;background:#F3F2EE"></div>
+            <div style="position:absolute;left:77.419%;top:12.903%;width:9.677%;height:9.677%;background:#F3F2EE"></div>
+            <div style="position:absolute;left:90.323%;top:12.903%;width:9.677%;height:9.677%;background:#F3F2EE"></div>
+            <div style="position:absolute;left:90.323%;top:0;width:9.677%;height:9.677%;background:#E8452C"></div>
+          </div>
+          <span style="position:absolute;left:20px;bottom:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8C8980">Reversed</span>
+        </div>
+        <div style="background:#fff;min-height:220px;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:32px;position:relative">
+          <div style="display:flex;align-items:flex-end;gap:24px">
+            <div style="position:relative;width:48px;aspect-ratio:1">
+              <div style="position:absolute;inset:0;background:#16181D;clip-path:polygon(0 0,51.6% 0,51.6% 51.6%,100% 51.6%,100% 100%,0 100%)"></div>
+              <div style="position:absolute;left:61%;top:0;width:39%;height:39%;background:#E8452C"></div>
+            </div>
+            <div style="position:relative;width:24px;aspect-ratio:1">
+              <div style="position:absolute;inset:0;background:#16181D;clip-path:polygon(0 0,51.6% 0,51.6% 51.6%,100% 51.6%,100% 100%,0 100%)"></div>
+              <div style="position:absolute;left:61%;top:0;width:39%;height:39%;background:#E8452C"></div>
+            </div>
+            <div style="position:relative;width:16px;aspect-ratio:1">
+              <div style="position:absolute;inset:0;background:#16181D;clip-path:polygon(0 0,51.6% 0,51.6% 51.6%,100% 51.6%,100% 100%,0 100%)"></div>
+              <div style="position:absolute;left:61%;top:0;width:39%;height:39%;background:#E8452C"></div>
+            </div>
+          </div>
+          <span style="font-size:14px;line-height:1.5;color:#3A3C42;max-width:34ch">Below 48px the mark drops depth, the same rule it’s built from. Favicon, avatar, stamp.</span>
+          <span style="position:absolute;left:32px;bottom:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860">Reduced resolution</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 Device -->
+    <div style="border-top:1px solid #16181D;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">03</span>
+        <span style="font-size:15px;font-weight:600">The Resolve Field</span>
+        <span style="font-size:14px;line-height:1.5;color:#6B6860;margin-top:10px;max-width:30ch">A living quadtree. It subdivides toward attention, the cursor, a scroll position, a data point, and always terminates in one vermilion cell. Move over it.</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column;gap:20px">
+        <canvas ref="{{ qt }}" data-live="1" data-root="h" data-rows="2" data-min="6" data-k="1.3" style="width:100%;height:clamp(320px,38vw,480px);display:block;background:#F3F2EE;outline:1px solid rgba(22,24,29,.2);cursor:crosshair"></canvas>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;font-size:14px;line-height:1.5;color:#3A3C42">
+          <div style="border-top:1px solid rgba(22,24,29,.2);padding-top:12px"><strong style="color:#16181D;font-weight:600;display:block;margin-bottom:4px">Halve, never divide.</strong>Cells only split by two on each axis. No thirds, no odd shapes.</div>
+          <div style="border-top:1px solid rgba(22,24,29,.2);padding-top:12px"><strong style="color:#16181D;font-weight:600;display:block;margin-bottom:4px">Ink follows depth.</strong>The deeper a cell, the more likely it is filled. Density reveals focus.</div>
+          <div style="border-top:1px solid rgba(22,24,29,.2);padding-top:12px"><strong style="color:#16181D;font-weight:600;display:block;margin-bottom:4px">One vermilion cell.</strong>Only the deepest cell carries colour. Never two.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 Type -->
+    <div style="border-top:1px solid #16181D;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">04</span>
+        <span style="font-size:15px;font-weight:600">Typography</span>
+        <span style="font-size:14px;line-height:1.5;color:#6B6860;margin-top:10px;max-width:30ch">Archivo, a grotesk with a width axis, set on a binary scale: every size is double the one below. Width expands as size grows, so large type reads as architecture, small type as text. IBM Plex Mono only for measurements.</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:baseline;gap:24px;border-bottom:1px solid rgba(22,24,29,.14);padding:4px 0 12px;overflow:hidden">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860;width:40px;flex:none">128</span>
+          <span style="font-size:clamp(56px,9vw,128px);font-weight:600;font-variation-settings:'wdth' 125;letter-spacing:-.05em;line-height:1;white-space:nowrap">Systems</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;border-bottom:1px solid rgba(22,24,29,.14);padding:14px 0">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860;width:40px;flex:none">64</span>
+          <span style="font-size:clamp(36px,5vw,64px);font-weight:600;font-variation-settings:'wdth' 112;letter-spacing:-.035em;line-height:1">that run themselves</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;border-bottom:1px solid rgba(22,24,29,.14);padding:14px 0">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860;width:40px;flex:none">32</span>
+          <span style="font-size:32px;font-weight:500;font-variation-settings:'wdth' 104;letter-spacing:-.02em;line-height:1.1">If a person has to do it twice, the software does it.</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;border-bottom:1px solid rgba(22,24,29,.14);padding:14px 0">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860;width:40px;flex:none">16</span>
+          <span style="font-size:16px;line-height:1.55;color:#3A3C42;max-width:60ch">Custom apps and internal tools built around how your business actually runs. Not a plugin. Built for you, owned by you.</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;padding:14px 0">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860;width:40px;flex:none">8</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#16181D">x 512 · y 256 · depth 6 · 1/4096</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Color -->
+    <div style="border-top:1px solid #16181D;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">05</span>
+        <span style="font-size:15px;font-weight:600">Colour</span>
+        <span style="font-size:14px;line-height:1.5;color:#6B6860;margin-top:10px;max-width:30ch">Paper, ink and three greys, one per depth. Vermilion is not an accent colour; it is a location. It marks the single deepest cell and never exceeds 1% of a surface.</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;height:180px;outline:1px solid rgba(22,24,29,.2)">
+          <div style="flex:62;background:#F3F2EE;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font-family:'IBM Plex Mono',monospace;font-size:11px"><span>Paper</span><span style="color:#6B6860">#F3F2EE</span></div>
+          <div style="flex:14;background:#E4E2DC;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font-family:'IBM Plex Mono',monospace;font-size:11px"><span>Depth 1</span><span style="color:#6B6860">#E4E2DC</span></div>
+          <div style="flex:8;background:#C9C6BE;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font-family:'IBM Plex Mono',monospace;font-size:11px"><span>D2</span></div>
+          <div style="flex:5;background:#8C8980;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff"><span>D3</span></div>
+          <div style="flex:10;background:#16181D;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#F3F2EE"><span>Ink</span><span style="color:#8C8980">#16181D</span></div>
+          <div style="flex:1;background:#E8452C"></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860"><span style="width:14px;height:14px;background:#E8452C;flex:none"></span>Vermilion · #E8452C · oklch(0.64 0.21 32) · ≤ 1% of any surface</div>
+      </div>
+    </div>
+
+    <!-- 06 Grid -->
+    <div style="border-top:1px solid #16181D;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">06</span>
+        <span style="font-size:15px;font-weight:600">Grid</span>
+        <span style="font-size:14px;line-height:1.5;color:#6B6860;margin-top:10px;max-width:30ch">No 12-column grid. Every layout is a recursive halving of the viewport. Important content gets a big cell; supporting detail lives in smaller ones. Hierarchy is literally resolution.</span>
+      </div>
+      <div style="flex:3 1 640px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+        <div style="aspect-ratio:4/3;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;border:1px solid #16181D;background:#fff">
+          <div style="grid-row:1/3;border-right:1px solid #16181D;padding:14px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6B6860">1/2 · statement</span><span style="font-size:22px;font-weight:600;font-variation-settings:'wdth' 112;letter-spacing:-.03em;line-height:1">We build it. We run it.</span></div>
+          <div style="border-bottom:1px solid #16181D;padding:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6B6860">1/4 · proof</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr">
+            <div style="border-right:1px solid #16181D;border-bottom:1px solid #16181D;padding:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#6B6860">1/16</div>
+            <div style="border-bottom:1px solid #16181D;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr"><div style="border-right:1px solid #16181D;border-bottom:1px solid #16181D"></div><div style="border-bottom:1px solid #16181D;background:#E8452C"></div><div style="border-right:1px solid #16181D"></div><div></div></div>
+            <div style="border-right:1px solid #16181D"></div>
+            <div></div>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;display:grid;grid-template-rows:1fr 1fr;border:1px solid #16181D;background:#fff">
+          <div style="border-bottom:1px solid #16181D;padding:14px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6B6860">1/2 · case study image</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+            <div style="border-right:1px solid #16181D;padding:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#6B6860">1/8 · client</div>
+            <div style="border-right:1px solid #16181D;padding:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#6B6860">1/8 · built</div>
+            <div style="border-right:1px solid #16181D;padding:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#6B6860">1/8 · run</div>
+            <div style="padding:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#6B6860">1/8 · result</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 Motion -->
+    <div style="border-top:1px solid #16181D;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">07</span>
+        <span style="font-size:15px;font-weight:600">Motion &amp; interaction</span>
+        <span style="font-size:14px;line-height:1.5;color:#6B6860;margin-top:10px;max-width:30ch">Things never fade in. They resolve: one cell, then four, then sixteen, until the content is sharp. 90ms per depth, stepped, no easing, it should feel computed, not animated.</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column;gap:24px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px">
+          <div style="display:flex;flex-direction:column;gap:8px"><canvas ref="{{ qt }}" data-root="full" data-min="400" data-k="0.01" data-fx="0.3" data-fy="0.6" data-fillall="1" style="width:100%;aspect-ratio:1;display:block;outline:1px solid rgba(22,24,29,.2)"></canvas><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6B6860">0 ms</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><canvas ref="{{ qt }}" data-root="full" data-min="0.5" data-maxd="2" data-k="3" data-fx="0.3" data-fy="0.6" data-fillall="1" style="width:100%;aspect-ratio:1;display:block;outline:1px solid rgba(22,24,29,.2)"></canvas><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6B6860">90 ms</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><canvas ref="{{ qt }}" data-root="full" data-min="0.5" data-maxd="4" data-k="1.2" data-fx="0.3" data-fy="0.6" data-fillall="1" style="width:100%;aspect-ratio:1;display:block;outline:1px solid rgba(22,24,29,.2)"></canvas><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6B6860">180 ms</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;position:relative"><div style="width:100%;aspect-ratio:1;outline:1px solid rgba(22,24,29,.2);background:#fff;padding:14px;display:flex;flex-direction:column;justify-content:flex-end"><span style="font-size:20px;font-weight:600;font-variation-settings:'wdth' 112;letter-spacing:-.03em;line-height:1">Automation</span><span style="font-size:12px;color:#3A3C42;margin-top:6px">Follow-up that runs itself.</span></div><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6B6860">270 ms · resolved</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;font-size:14px;line-height:1.5;color:#3A3C42">
+          <div style="border-top:1px solid rgba(22,24,29,.2);padding-top:12px"><strong style="color:#16181D;font-weight:600;display:block;margin-bottom:4px">Resolve in</strong>Images, cards and type arrive coarse-to-fine as they enter the viewport.</div>
+          <div style="border-top:1px solid rgba(22,24,29,.2);padding-top:12px"><strong style="color:#16181D;font-weight:600;display:block;margin-bottom:4px">Attention</strong>Hover subdivides a cell to reveal detail, metrics, stack, outcome.</div>
+          <div style="border-top:1px solid rgba(22,24,29,.2);padding-top:12px"><strong style="color:#16181D;font-weight:600;display:block;margin-bottom:4px">Zoom</strong>Navigation zooms into the clicked cell; its child becomes the next page.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 Website -->
+    <div style="border-top:1px solid #16181D;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">08</span>
+        <span style="font-size:15px;font-weight:600">On the website</span>
+        <span style="font-size:14px;line-height:1.5;color:#6B6860;margin-top:10px;max-width:30ch">The services index is a row of cells. Attention resolves one; the rest compress. Hover across it.</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;height:300px;border:1px solid #16181D;background:#fff;overflow:hidden">
+          <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+            <div onMouseEnter="{{ s.enter }}" style="flex:{{ s.flex }};min-width:0;border-right:1px solid #16181D;padding:18px;display:flex;flex-direction:column;justify-content:space-between;transition:flex .27s steps(3);cursor:default;background:{{ s.bg }};color:{{ s.fg }}">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px">{{ s.n }}</span>
+              <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+                <span style="font-size:22px;font-weight:600;font-variation-settings:'wdth' 108;letter-spacing:-.03em;line-height:1.05;writing-mode:{{ s.wm }};transform:{{ s.rot }};white-space:nowrap">{{ s.t }}</span>
+                <span style="font-size:14px;line-height:1.5;opacity:{{ s.op }};max-width:36ch">{{ s.d }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;font-size:14px;line-height:1.5;color:#3A3C42">
+          <div style="border-top:1px solid rgba(22,24,29,.2);padding-top:12px"><strong style="color:#16181D;font-weight:600;display:block;margin-bottom:4px">Case studies as zooms</strong>Each project opens at depth 0 (the business) and zooms to the 1px it changed: “missed calls: 0”.</div>
+          <div style="border-top:1px solid rgba(22,24,29,.2);padding-top:12px"><strong style="color:#16181D;font-weight:600;display:block;margin-bottom:4px">Honest numbers</strong>Metrics sit in the smallest cells, set in mono, measured, not marketed.</div>
+          <div style="border-top:1px solid rgba(22,24,29,.2);padding-top:12px"><strong style="color:#16181D;font-weight:600;display:block;margin-bottom:4px">Scroll = depth</strong>The page is one field. Scrolling descends a level; the vermilion cell tracks where you are.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 Hero -->
+    <div style="border-top:1px solid #16181D;padding:28px 0 24px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">09</span>
+        <span style="font-size:15px;font-weight:600">Homepage hero</span>
+      </div>
+      <div style="flex:3 1 640px;font-size:14px;line-height:1.5;color:#6B6860;max-width:60ch">The headline owns the largest cell. The field to its right is the business, it resolves toward your cursor, and when idle it drifts, looking for the drain.</div>
+    </div>
+  </div>
+
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(12px,2vw,28px) 88px">
+    <div style="background:#F3F2EE;border:1px solid #16181D;display:flex;flex-direction:column;min-height:640px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 24px;border-bottom:1px solid #16181D;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="position:relative;width:22px;aspect-ratio:1">
+            <div style="position:absolute;inset:0;background:#16181D;clip-path:polygon(0 0,51.6% 0,51.6% 51.6%,100% 51.6%,100% 100%,0 100%)"></div>
+            <div style="position:absolute;left:61%;top:0;width:39%;height:39%;background:#E8452C"></div>
+          </div>
+          <span style="font-size:18px;font-weight:600;font-variation-settings:'wdth' 112;letter-spacing:-.035em">PixelMetrics</span>
+        </div>
+        <div style="display:flex;gap:28px;font-size:14px;align-items:center;flex-wrap:wrap">
+          <a href="#">Services</a><a href="#">Method</a><a href="#">Proof</a>
+          <a href="#" style="background:#16181D;color:#F3F2EE;padding:10px 16px;font-weight:500">Book a scoping call</a>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;flex-wrap:wrap">
+        <div style="flex:1 1 440px;padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:48px;border-right:1px solid #16181D">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#6B6860">Software · Websites · Automation</span>
+          <h2 style="margin:0;font-size:clamp(48px,6.2vw,92px);line-height:.92;font-weight:600;font-variation-settings:'wdth' 116;letter-spacing:-.045em;text-wrap:balance">We build the systems your business runs on.</h2>
+          <div style="display:flex;flex-direction:column;gap:28px">
+            <p style="margin:0;font-size:17px;line-height:1.55;color:#3A3C42;max-width:44ch;text-wrap:pretty">Custom software, websites and automation, designed, built and run by a team that operates its own companies. One team, accountable end to end.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="#" style="background:#16181D;color:#F3F2EE;padding:15px 22px;font-size:15px;font-weight:500">Book a 30-min scoping call</a>
+              <a href="#" style="border:1px solid #16181D;padding:15px 22px;font-size:15px;font-weight:500">See what we build</a>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1 1 440px;position:relative;min-height:420px;cursor:crosshair">
+          <canvas ref="{{ qt }}" data-live="1" data-root="h" data-rows="3" data-min="5" data-k="1.25" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+          <div style="position:absolute;left:0;right:0;bottom:0;border-top:1px solid #16181D;background:#F3F2EE;display:flex;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.04em">
+            <span style="padding:12px 16px;border-right:1px solid #16181D;color:#E8452C">We operate</span>
+            <span style="padding:12px 16px;border-right:1px solid #16181D">EffectiveAgents</span>
+            <span style="padding:12px 16px;border-right:1px solid #16181D">Popolo</span>
+            <span style="padding:12px 16px">Bird of Paradise</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,56px) 120px">
+    <!-- 10 Without logo -->
+    <div style="border-top:1px solid #16181D;padding:28px 0 0;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E8452C">10</span>
+        <span style="font-size:15px;font-weight:600">Without the logo</span>
+        <span style="font-size:14px;line-height:1.5;color:#6B6860;margin-top:10px;max-width:30ch">Hairline squares that halve toward one vermilion cell. You could recognise it from a single corner of an invoice.</span>
+      </div>
+      <div style="flex:3 1 640px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <canvas ref="{{ qt }}" data-root="full" data-min="0.5" data-maxd="6" data-k="0.9" data-fx="0.82" data-fy="0.7" data-dark="1" style="width:100%;aspect-ratio:3/4;display:block;background:#16181D"></canvas>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860">Business card, back</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="width:100%;aspect-ratio:3/4;background:#fff;outline:1px solid rgba(22,24,29,.2);position:relative;padding:18px;display:flex;flex-direction:column;justify-content:space-between">
+            <div style="position:absolute;top:0;right:0;width:50%;height:37.5%;border-left:1px solid rgba(22,24,29,.35);border-bottom:1px solid rgba(22,24,29,.35)"><div style="position:absolute;top:0;right:0;width:50%;height:50%;border-left:1px solid rgba(22,24,29,.35);border-bottom:1px solid rgba(22,24,29,.35)"><div style="position:absolute;top:0;right:0;width:50%;height:50%;background:#E8452C"></div></div></div>
+            <span></span>
+            <div style="display:flex;flex-direction:column;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#6B6860"><span>Invoice 2026-041</span><span>Intake automation · live</span></div>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860">Document corner</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <canvas ref="{{ qt }}" data-root="full" data-min="0.5" data-maxd="7" data-k="1.4" data-fx="0.18" data-fy="0.22" style="width:100%;aspect-ratio:3/4;display:block;background:#E4E2DC"></canvas>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6B6860">Studio wall / social crop</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { svc: 0 };
+  fields = [];
+  qt = (el) => {
+    if (!el || el._qt) return;
+    el._qt = 1;
+    const f = { el, t: Math.random() * 100, hover: null, p: null };
+    const target = el.dataset.live === '1' ? el.parentElement : null;
+    if (target) {
+      target.addEventListener('pointermove', (e) => { const r = el.getBoundingClientRect(); f.hover = { x: e.clientX - r.left, y: e.clientY - r.top }; });
+      target.addEventListener('pointerleave', () => { f.hover = null; });
+    }
+    this.fields.push(f);
+  };
+  componentDidMount() {
+    const loop = () => { this.fields.forEach((f) => this.draw(f)); this.raf = requestAnimationFrame(loop); };
+    loop();
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); }
+  draw(f) {
+    const el = f.el, d = el.dataset;
+    if (!el.isConnected) return;
+    const w = el.clientWidth, h = el.clientHeight;
+    if (!w || !h) return;
+    const live = d.live === '1';
+    if (!live && f.w === w && f.h === h) return;
+    f.w = w; f.h = h;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const W = Math.round(w * dpr), H = Math.round(h * dpr);
+    if (el.width !== W || el.height !== H) { el.width = W; el.height = H; }
+    let tx, ty;
+    if (live) {
+      f.t += 0.0035;
+      if (f.hover) { tx = f.hover.x; ty = f.hover.y; }
+      else { tx = w * (0.5 + 0.38 * Math.sin(f.t * 1.3)); ty = h * (0.45 + 0.36 * Math.sin(f.t * 1.9 + 1)); }
+      if (!f.p) f.p = { x: tx, y: ty };
+      f.p.x += (tx - f.p.x) * 0.09; f.p.y += (ty - f.p.y) * 0.09;
+    } else f.p = { x: +d.fx * w, y: +d.fy * h };
+    const p = f.p;
+    const ctx = el.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    const dark = d.dark === '1';
+    const root = d.root === 'full' ? Math.max(w, h) : h / (+d.rows || 2);
+    const min = +d.min || 6, k = +d.k || 1.2, maxd = d.maxd ? +d.maxd : 99, fillall = d.fillall === '1';
+    const cells = [];
+    const sub = (x, y, s, dep) => {
+      const dx = Math.max(x - p.x, 0, p.x - (x + s)), dy = Math.max(y - p.y, 0, p.y - (y + s));
+      const dist = Math.hypot(dx, dy);
+      if (s / 2 >= min && dep < maxd && dist < s * k * 0.5) {
+        const q = s / 2;
+        sub(x, y, q, dep + 1); sub(x + q, y, q, dep + 1); sub(x, y + q, q, dep + 1); sub(x + q, y + q, q, dep + 1);
+      } else cells.push([x, y, s, dep]);
+    };
+    const cols = Math.ceil(w / root), rows = Math.ceil(h / root);
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) sub(c * root, r * root, root, 0);
+    const hs = (x, y, s) => { const n = Math.sin(x * 12.9898 + y * 78.233 + s * 37.719) * 43758.5453; return n - Math.floor(n); };
+    const ink = dark ? '#F3F2EE' : '#16181D';
+    const greys = dark ? ['#2A2C31', '#3B3D42', '#55575C'] : ['#E4E2DC', '#C9C6BE', '#8C8980'];
+    let best = null;
+    cells.forEach((c) => {
+      const [x, y, s, dep] = c;
+      if (p.x >= x && p.x < x + s && p.y >= y && p.y < y + s) best = c;
+      const r = hs(Math.round(x), Math.round(y), Math.round(s));
+      let fill = null;
+      if (fillall) fill = dep === 0 ? greys[0] : (r < 0.25 ? ink : greys[Math.min(2, Math.floor(r * 3))]);
+      else {
+        const pInk = 0.012 + dep * 0.02, pG = 0.06 + dep * 0.035;
+        if (r < pInk) fill = ink; else if (r < pInk + pG) fill = greys[Math.min(2, Math.floor(((r - pInk) / pG) * 3))];
+      }
+      if (fill) { ctx.fillStyle = fill; ctx.fillRect(x, y, s, s); }
+    });
+    ctx.strokeStyle = dark ? 'rgba(243,242,238,.22)' : 'rgba(22,24,29,.2)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    cells.forEach(([x, y, s]) => { ctx.rect(Math.round(x) + 0.5, Math.round(y) + 0.5, Math.round(s), Math.round(s)); });
+    ctx.stroke();
+    if (best && (best[3] > 0 || d.root !== 'full')) { ctx.fillStyle = '#E8452C'; ctx.fillRect(best[0], best[1], best[2], best[2]); }
+  }
+  renderVals() {
+    const data = [
+      ['01', 'Software', 'Custom apps and internal tools built around how your business actually runs. Not a plugin. Built for you, owned by you.'],
+      ['02', 'Websites', 'Sites that load fast, rank well and turn visitors into calls. Designed and built in-house, no templates.'],
+      ['03', 'Automation', 'The follow-up, intake, quoting and paperwork that runs itself. If a person has to do it twice, the software does it.'],
+      ['04', 'Stack upgrades', 'We find what is slow, manual or held together with duct tape, and replace it while you keep working.'],
+      ['05', 'Process', 'Before we automate anything, we fix the steps that waste your hours. Fewer steps, then no human needed for the rest.']
+    ];
+    const a = this.state.svc;
+    return {
+      qt: this.qt,
+      services: data.map(([n, t, dd], i) => ({
+        n, t, d: dd,
+        flex: i === a ? 6 : 1,
+        op: i === a ? 1 : 0,
+        bg: i === a ? '#16181D' : '#fff',
+        fg: i === a ? '#F3F2EE' : '#16181D',
+        wm: i === a ? 'horizontal-tb' : 'vertical-rl',
+        rot: i === a ? 'none' : 'rotate(180deg)',
+        enter: () => this.setState({ svc: i })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

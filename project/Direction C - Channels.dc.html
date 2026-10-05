@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F1EFE9;color:#1B1A17;font-family:'Bricolage Grotesque',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1B1A17;text-decoration:none}a:hover{color:#BD5B45}
+*{box-sizing:border-box}
+input[type=range]{accent-color:#1B1A17}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#F1EFE9">
+  <div style="position:sticky;top:0;z-index:10;background:#F1EFE9;border-bottom:1px solid rgba(27,26,23,.14)">
+    <div style="max-width:1320px;margin:0 auto;padding:14px clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase">
+      <span>PixelMetrics · Identity exploration</span>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="Direction%20A%20-%20Resolution.dc.html">A · Resolution</a>
+        <a href="Direction%20B%20-%20One%20Pixel%20On.dc.html">B · One Pixel On</a>
+        <a href="Direction%20C%20-%20Channels.dc.html" style="color:#BD5B45">C · Channels</a>
+        <a href="Direction%20D%20-%20Live%20Resolution.dc.html">D · Live Resolution</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+
+    <div style="padding:clamp(56px,9vw,128px) 0 clamp(40px,6vw,80px);display:flex;flex-wrap:wrap;gap:40px;align-items:flex-end;justify-content:space-between">
+      <div style="flex:1 1 560px">
+        <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:28px;color:#6E6C66">Direction C</div>
+        <h1 style="margin:0;font-size:clamp(80px,14vw,208px);line-height:.82;font-weight:700;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.035em;background-image:repeating-linear-gradient(90deg,#BD5B45 0 5px,#5F8C4A 5px 10px,#4B83B6 10px 15px);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Channels</h1>
+        <p style="margin:32px 0 0;font-size:clamp(22px,2.4vw,32px);line-height:1.15;font-weight:400;font-variation-settings:'wdth' 90;letter-spacing:-.015em;max-width:24ch;text-wrap:pretty">Look closely at any pixel: it’s three. Step back: it’s one.</p>
+      </div>
+      <div style="flex:0 1 360px;font-size:16px;line-height:1.55;color:#56544E;text-wrap:pretty">Every pixel on a screen is made of three subpixels working as one. PixelMetrics is three disciplines, software, websites, automation, delivered by one accountable team. The identity is built from that structure: three channels, in register.</div>
+    </div>
+
+    <!-- 01 -->
+    <div style="border-top:1px solid #1B1A17;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#BD5B45">01</span>
+        <span style="font-size:16px;font-weight:600">Central idea</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column;gap:40px">
+        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch">
+          <div style="flex:1 1 260px;min-height:280px;background:#1B1A17;display:flex;flex-direction:column;justify-content:space-between;padding:18px">
+            <span style="font-family:'DM Mono',monospace;font-size:11px;color:#8A877F">From across the room</span>
+            <span style="width:28px;height:28px;background:#F1EFE9;align-self:center"></span>
+            <span style="font-family:'DM Mono',monospace;font-size:11px;color:#F1EFE9">1 pixel · one team</span>
+          </div>
+          <div style="flex:2 1 400px;min-height:280px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;background:#1B1A17;padding:18px">
+            <div style="background:#BD5B45;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;color:#fff"><span style="font-size:22px;font-weight:700;font-variation-settings:'wdth' 75">Software</span><span style="font-family:'DM Mono',monospace;font-size:10px;margin-top:4px">apps · tools · integrations</span></div>
+            <div style="background:#5F8C4A;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;color:#fff"><span style="font-size:22px;font-weight:700;font-variation-settings:'wdth' 75">Websites</span><span style="font-family:'DM Mono',monospace;font-size:10px;margin-top:4px">design · build · launch</span></div>
+            <div style="background:#4B83B6;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;color:#fff"><span style="font-size:22px;font-weight:700;font-variation-settings:'wdth' 75">Automation</span><span style="font-family:'DM Mono',monospace;font-size:10px;margin-top:4px">agents · workflows · ops</span></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px 40px;font-size:16px;line-height:1.55;color:#56544E">
+          <p style="margin:0;text-wrap:pretty"><strong style="color:#1B1A17;font-weight:600">Why it’s theirs.</strong> Most agencies sell one of these and subcontract the rest. PixelMetrics’ entire pitch is that the three are inseparable, a website that doesn’t connect to the software, or automation that isn’t run by the people who built it, is a broken pixel.</p>
+          <p style="margin:0;text-wrap:pretty"><strong style="color:#1B1A17;font-weight:600">Measurable.</strong> Every project has a signature, how much of each channel it took. The “metrics” in the name becomes a visible, honest record of what was built.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div style="border-top:1px solid #1B1A17;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#BD5B45">02</span>
+        <span style="font-size:16px;font-weight:600">Logo &amp; wordmark</span>
+        <span style="font-size:14px;line-height:1.5;color:#6E6C66;margin-top:10px;max-width:30ch">The Subpixel: a square of three vertical bars, the actual geometry of an RGB pixel. Paired with a condensed wordmark whose letters share the bars’ tall 1:3 proportion.</span>
+      </div>
+      <div style="flex:3 1 640px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+        <div style="grid-column:1/-1;background:#fff;min-height:320px;display:flex;align-items:center;justify-content:center;padding:48px;position:relative">
+          <div style="display:flex;align-items:center;gap:clamp(14px,2vw,24px)">
+            <div style="position:relative;width:clamp(56px,7vw,92px);aspect-ratio:1;flex:none">
+              <span style="position:absolute;left:0;top:0;bottom:0;width:30%;background:#BD5B45"></span>
+              <span style="position:absolute;left:35%;top:0;bottom:0;width:30%;background:#5F8C4A"></span>
+              <span style="position:absolute;left:70%;top:0;bottom:0;width:30%;background:#4B83B6"></span>
+            </div>
+            <span style="font-size:clamp(56px,8.4vw,112px);font-weight:700;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.03em;line-height:.8">PixelMetrics</span>
+          </div>
+          <span style="position:absolute;left:20px;bottom:16px;font-family:'DM Mono',monospace;font-size:11px;color:#6E6C66">Primary · Bricolage Grotesque 700, width 75</span>
+        </div>
+        <div style="background:#1B1A17;min-height:220px;display:flex;align-items:center;justify-content:center;gap:28px;position:relative">
+          <div style="position:relative;width:80px;aspect-ratio:1">
+            <span style="position:absolute;left:0;top:0;bottom:0;width:30%;background:#F1EFE9"></span>
+            <span style="position:absolute;left:35%;top:0;bottom:0;width:30%;background:#F1EFE9"></span>
+            <span style="position:absolute;left:70%;top:0;bottom:0;width:30%;background:#F1EFE9"></span>
+          </div>
+          <div style="position:relative;width:32px;aspect-ratio:1">
+            <span style="position:absolute;left:0;top:0;bottom:0;width:30%;background:#BD5B45"></span>
+            <span style="position:absolute;left:35%;top:0;bottom:0;width:30%;background:#5F8C4A"></span>
+            <span style="position:absolute;left:70%;top:0;bottom:0;width:30%;background:#4B83B6"></span>
+          </div>
+          <span style="position:absolute;left:20px;bottom:16px;font-family:'DM Mono',monospace;font-size:11px;color:#8A877F">Mono &amp; favicon</span>
+        </div>
+        <div style="background:#fff;min-height:220px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px;padding:32px;position:relative">
+          <span style="font-size:64px;font-weight:700;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.03em;line-height:.85;background-image:repeating-linear-gradient(90deg,#BD5B45 0 2px,#5F8C4A 2px 4px,#4B83B6 4px 6px);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">PixelMetrics</span>
+          <span style="font-size:14px;line-height:1.5;color:#56544E;max-width:34ch">Display wordmark, filled with channel stripes. Reads as one warm tone at a distance.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div style="border-top:1px solid #1B1A17;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#BD5B45">03</span>
+        <span style="font-size:16px;font-weight:600">The Channel Screen</span>
+        <span style="font-size:14px;line-height:1.5;color:#6E6C66;margin-top:10px;max-width:30ch">Type and imagery can be filled with a repeating clay–moss–slate stripe. Its pitch is tied to viewing distance: fine on screen, coarse on a wall. Drag to step closer.</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column;gap:20px">
+        <div style="background:#fff;padding:clamp(20px,3vw,40px);display:flex;flex-direction:column;gap:24px;overflow:hidden">
+          <span style="font-size:clamp(88px,16vw,232px);font-weight:800;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.04em;line-height:.8;background-image:{{ stripeBg }};-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;white-space:nowrap">One system</span>
+          <div style="display:flex;align-items:center;gap:16px;font-family:'DM Mono',monospace;font-size:11px;color:#6E6C66;flex-wrap:wrap">
+            <span>Far</span>
+            <input type="range" min="0" max="24" step="1" value="{{ sw }}" onChange="{{ setSw }}" style="flex:1 1 200px">
+            <span>Close</span>
+            <span style="color:#1B1A17;min-width:110px">{{ swLabel }}</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;font-size:14px;line-height:1.5;color:#56544E">
+          <div style="border-top:1px solid rgba(27,26,23,.2);padding-top:12px"><strong style="color:#1B1A17;font-weight:600;display:block;margin-bottom:4px">Always in order.</strong>Clay, moss, slate, left to right, equal width. The order is the brand.</div>
+          <div style="border-top:1px solid rgba(27,26,23,.2);padding-top:12px"><strong style="color:#1B1A17;font-weight:600;display:block;margin-bottom:4px">Vertical only.</strong>Channels never run horizontally or diagonally. No gradients between them.</div>
+          <div style="border-top:1px solid rgba(27,26,23,.2);padding-top:12px"><strong style="color:#1B1A17;font-weight:600;display:block;margin-bottom:4px">Once per view.</strong>One striped element per screen. Everything else is ink on paper.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div style="border-top:1px solid #1B1A17;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#BD5B45">04</span>
+        <span style="font-size:16px;font-weight:600">Typography</span>
+        <span style="font-size:14px;line-height:1.5;color:#6E6C66;margin-top:10px;max-width:30ch">One family, Bricolage Grotesque, used along its width axis: condensed 75 for display (tall like subpixels), 90–100 for text. DM Mono for labels and signatures.</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column">
+        <div style="display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;padding-bottom:24px;border-bottom:1px solid rgba(27,26,23,.14)">
+          <span style="font-size:clamp(120px,18vw,240px);font-weight:700;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.04em;line-height:.78">Aa</span>
+          <div style="display:flex;gap:6px;align-items:flex-end;padding-bottom:10px">
+            <span style="width:20px;height:60px;background:#BD5B45"></span><span style="width:20px;height:60px;background:#5F8C4A"></span><span style="width:20px;height:60px;background:#4B83B6"></span>
+            <span style="font-family:'DM Mono',monospace;font-size:11px;color:#6E6C66;margin-left:12px">1 : 3</span>
+          </div>
+        </div>
+        <div style="padding:20px 0;border-bottom:1px solid rgba(27,26,23,.14)">
+          <span style="font-size:clamp(40px,5.4vw,72px);font-weight:700;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.03em;line-height:.9;display:block;text-wrap:balance">We build it. We run it.</span>
+        </div>
+        <div style="padding:20px 0;border-bottom:1px solid rgba(27,26,23,.14)">
+          <span style="font-size:26px;font-weight:500;font-variation-settings:'wdth' 90;letter-spacing:-.015em;line-height:1.15;display:block;max-width:32ch">If a person has to do it twice, we make the software do it.</span>
+        </div>
+        <div style="padding:20px 0;display:flex;flex-wrap:wrap;gap:20px 48px">
+          <span style="font-size:16px;line-height:1.55;color:#56544E;max-width:54ch;font-variation-settings:'wdth' 100">Sites that load fast, rank well and turn visitors into calls. Designed and built in-house, no templates handed to you.</span>
+          <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase">SW 55 · WEB 15 · AUTO 30</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div style="border-top:1px solid #1B1A17;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#BD5B45">05</span>
+        <span style="font-size:16px;font-weight:600">Colour</span>
+        <span style="font-size:14px;line-height:1.5;color:#6E6C66;margin-top:10px;max-width:30ch">Three channels with identical lightness and chroma, differing only in hue, mineral versions of R, G and B. Each also codes a discipline. Paper and ink carry everything else.</span>
+      </div>
+      <div style="flex:3 1 640px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
+        <div style="aspect-ratio:1/2;background:#BD5B45;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font-family:'DM Mono',monospace;font-size:11px;color:#fff"><span>Clay · Software</span><span>oklch(.6 .13 35)</span></div>
+        <div style="aspect-ratio:1/2;background:#5F8C4A;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font-family:'DM Mono',monospace;font-size:11px;color:#fff"><span>Moss · Web</span><span>oklch(.6 .13 140)</span></div>
+        <div style="aspect-ratio:1/2;background:#4B83B6;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font-family:'DM Mono',monospace;font-size:11px;color:#fff"><span>Slate · Automation</span><span>oklch(.6 .13 245)</span></div>
+        <div style="aspect-ratio:1/2;background:#F1EFE9;outline:1px solid rgba(27,26,23,.2);padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font-family:'DM Mono',monospace;font-size:11px"><span>Paper</span><span style="color:#6E6C66">#F1EFE9</span></div>
+        <div style="aspect-ratio:1/2;background:#1B1A17;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;font-family:'DM Mono',monospace;font-size:11px;color:#F1EFE9"><span>Ink</span><span style="color:#8A877F">#1B1A17 · all three, in register</span></div>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div style="border-top:1px solid #1B1A17;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#BD5B45">06</span>
+        <span style="font-size:16px;font-weight:600">Grid</span>
+        <span style="font-size:14px;line-height:1.5;color:#6E6C66;margin-top:10px;max-width:30ch">Nine columns in three groups of three, a pixel of pixels. Content spans 1, 3 or 9; blocks are tall rather than wide. The page reads in vertical strips, like a screen under a loupe.</span>
+      </div>
+      <div style="flex:3 1 640px">
+        <div style="aspect-ratio:16/8;background:#fff;display:grid;grid-template-columns:repeat(9,1fr);gap:0;position:relative;outline:1px solid rgba(27,26,23,.2)">
+          <div style="grid-column:1/4;grid-row:1;border-right:1px solid #1B1A17;padding:14px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'DM Mono',monospace;font-size:10px;color:#BD5B45">span 3 · channel 1</span><span style="font-size:clamp(18px,2.4vw,30px);font-weight:700;font-variation-settings:'wdth' 75;line-height:.9">Custom software, not plugins</span></div>
+          <div style="grid-column:4/7;grid-row:1;border-right:1px solid #1B1A17;padding:14px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'DM Mono',monospace;font-size:10px;color:#5F8C4A">span 3 · channel 2</span><span style="font-size:clamp(18px,2.4vw,30px);font-weight:700;font-variation-settings:'wdth' 75;line-height:.9">Websites built to sell</span></div>
+          <div style="grid-column:7/10;grid-row:1;padding:14px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'DM Mono',monospace;font-size:10px;color:#4B83B6">span 3 · channel 3</span><span style="font-size:clamp(18px,2.4vw,30px);font-weight:700;font-variation-settings:'wdth' 75;line-height:.9">Automation that holds up</span></div>
+          <span style="position:absolute;left:11.11%;top:0;bottom:0;border-left:1px dashed rgba(27,26,23,.14)"></span>
+          <span style="position:absolute;left:22.22%;top:0;bottom:0;border-left:1px dashed rgba(27,26,23,.14)"></span>
+          <span style="position:absolute;left:44.44%;top:0;bottom:0;border-left:1px dashed rgba(27,26,23,.14)"></span>
+          <span style="position:absolute;left:55.55%;top:0;bottom:0;border-left:1px dashed rgba(27,26,23,.14)"></span>
+          <span style="position:absolute;left:77.77%;top:0;bottom:0;border-left:1px dashed rgba(27,26,23,.14)"></span>
+          <span style="position:absolute;left:88.88%;top:0;bottom:0;border-left:1px dashed rgba(27,26,23,.14)"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div style="border-top:1px solid #1B1A17;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#BD5B45">07</span>
+        <span style="font-size:16px;font-weight:600">Motion &amp; interaction</span>
+        <span style="font-size:14px;line-height:1.5;color:#6E6C66;margin-top:10px;max-width:30ch">Register. Like plates on a press, elements arrive as three offset channel impressions that slide into alignment, and multiply into ink. Things become “done” when they come into register. Hover it.</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column;gap:24px">
+        <div onMouseEnter="{{ convOn }}" onMouseLeave="{{ convOff }}" style="background:#fff;height:clamp(220px,26vw,320px);position:relative;overflow:hidden;cursor:default;isolation:isolate">
+          <span style="position:absolute;left:50%;top:50%;transform:translate(calc(-50% - {{ off }}px),-50%);font-size:clamp(64px,11vw,156px);font-weight:800;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.04em;line-height:1;color:#BD5B45;mix-blend-mode:multiply;transition:transform .5s cubic-bezier(.3,.7,.1,1);white-space:nowrap">Launched</span>
+          <span style="position:absolute;left:50%;top:50%;transform:translate(-50%,calc(-50% + {{ offY }}px));font-size:clamp(64px,11vw,156px);font-weight:800;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.04em;line-height:1;color:#5F8C4A;mix-blend-mode:multiply;transition:transform .5s cubic-bezier(.3,.7,.1,1) .05s;white-space:nowrap">Launched</span>
+          <span style="position:absolute;left:50%;top:50%;transform:translate(calc(-50% + {{ off }}px),-50%);font-size:clamp(64px,11vw,156px);font-weight:800;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.04em;line-height:1;color:#4B83B6;mix-blend-mode:multiply;transition:transform .5s cubic-bezier(.3,.7,.1,1) .1s;white-space:nowrap">Launched</span>
+          <span style="position:absolute;left:16px;bottom:12px;font-family:'DM Mono',monospace;font-size:11px;color:#6E6C66">{{ convLabel }}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;font-size:14px;line-height:1.5;color:#56544E">
+          <div style="border-top:1px solid rgba(27,26,23,.2);padding-top:12px"><strong style="color:#1B1A17;font-weight:600;display:block;margin-bottom:4px">Register on entry</strong>Headlines and images arrive misregistered by a few pixels and settle over 500ms.</div>
+          <div style="border-top:1px solid rgba(27,26,23,.2);padding-top:12px"><strong style="color:#1B1A17;font-weight:600;display:block;margin-bottom:4px">Isolate a channel</strong>Hovering a discipline dims the other two channels across the page.</div>
+          <div style="border-top:1px solid rgba(27,26,23,.2);padding-top:12px"><strong style="color:#1B1A17;font-weight:600;display:block;margin-bottom:4px">Three-bar progress</strong>Loading fills clay, then moss, then slate. When all three are full, it’s live.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div style="border-top:1px solid #1B1A17;padding:28px 0 72px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#BD5B45">08</span>
+        <span style="font-size:16px;font-weight:600">On the website</span>
+        <span style="font-size:14px;line-height:1.5;color:#6E6C66;margin-top:10px;max-width:30ch">Every project carries its channel signature: a proportional three-bar showing how much software, web and automation went into it. Scannable proof of range.</span>
+      </div>
+      <div style="flex:3 1 640px;display:flex;flex-direction:column;gap:28px">
+        <div style="background:#fff;padding:clamp(18px,3vw,32px);display:flex;flex-direction:column">
+          <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+            <div style="display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;padding:20px 0;border-bottom:1px solid rgba(27,26,23,.14)">
+              <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:4px">
+                <span style="font-size:32px;font-weight:700;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.02em;line-height:1">{{ p.name }}</span>
+                <span style="font-size:14px;color:#56544E">{{ p.what }}</span>
+              </div>
+              <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;height:40px;gap:3px">
+                  <span style="flex:{{ p.a }};background:#BD5B45"></span>
+                  <span style="flex:{{ p.b }};background:#5F8C4A"></span>
+                  <span style="flex:{{ p.c }};background:#4B83B6"></span>
+                </div>
+                <span style="font-family:'DM Mono',monospace;font-size:10px;color:#6E6C66">SW {{ p.a }} · WEB {{ p.b }} · AUTO {{ p.c }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;font-size:14px;line-height:1.5;color:#56544E">
+          <div style="border-top:1px solid rgba(27,26,23,.2);padding-top:12px"><strong style="color:#1B1A17;font-weight:600;display:block;margin-bottom:4px">Services as channels</strong>The services page is three tall columns. Scope calls start by choosing a mix, not a package.</div>
+          <div style="border-top:1px solid rgba(27,26,23,.2);padding-top:12px"><strong style="color:#1B1A17;font-weight:600;display:block;margin-bottom:4px">Filter by channel</strong>Tapping a colour isolates the work that leaned on it.</div>
+          <div style="border-top:1px solid rgba(27,26,23,.2);padding-top:12px"><strong style="color:#1B1A17;font-weight:600;display:block;margin-bottom:4px">Imagery through the screen</strong>Photography is screened in vertical channels at hero scale, clean everywhere else.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div style="border-top:1px solid #1B1A17;padding:28px 0 24px;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#BD5B45">09</span>
+        <span style="font-size:16px;font-weight:600">Homepage hero</span>
+      </div>
+      <div style="flex:3 1 640px;font-size:14px;line-height:1.5;color:#6E6C66;max-width:60ch">A condensed headline sits above three channels. Hover one and the headline takes its colour while the channel opens, the other two step back.</div>
+    </div>
+  </div>
+
+  <div style="max-width:1440px;margin:0 auto;padding:0 clamp(12px,2vw,28px) 88px">
+    <div style="background:#F1EFE9;outline:1px solid #1B1A17;min-height:720px;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px clamp(20px,3vw,36px);flex-wrap:wrap;border-bottom:1px solid #1B1A17">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="position:relative;width:22px;aspect-ratio:1">
+            <span style="position:absolute;left:0;top:0;bottom:0;width:30%;background:#BD5B45"></span>
+            <span style="position:absolute;left:35%;top:0;bottom:0;width:30%;background:#5F8C4A"></span>
+            <span style="position:absolute;left:70%;top:0;bottom:0;width:30%;background:#4B83B6"></span>
+          </div>
+          <span style="font-size:24px;font-weight:700;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.02em;line-height:1">PixelMetrics</span>
+        </div>
+        <div style="display:flex;gap:28px;font-size:15px;align-items:center;flex-wrap:wrap">
+          <a href="#">Services</a><a href="#">Method</a><a href="#">Proof</a>
+          <a href="#" style="background:#1B1A17;color:#F1EFE9;padding:10px 16px;font-weight:500">Book a scoping call</a>
+        </div>
+      </div>
+      <div style="padding:clamp(28px,4vw,56px) clamp(20px,3vw,36px) clamp(24px,3vw,40px);display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;justify-content:space-between">
+        <h2 style="margin:0;font-size:clamp(60px,9.6vw,152px);font-weight:700;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.035em;line-height:.84;max-width:11ch;color:{{ heroColor }};transition:color .3s;text-wrap:balance">We build the systems your business runs on.</h2>
+        <div style="flex:0 1 340px;display:flex;flex-direction:column;gap:20px">
+          <p style="margin:0;font-size:17px;line-height:1.5;color:#56544E;text-wrap:pretty">Software, websites and automation from one team that runs its own companies. Three disciplines, accountable as one.</p>
+          <a href="#" style="align-self:flex-start;background:#1B1A17;color:#F1EFE9;padding:15px 22px;font-size:15px;font-weight:500">Book a 30-min scoping call</a>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;min-height:260px;border-top:1px solid #1B1A17">
+        <sc-for list="{{ channels }}" as="c" hint-placeholder-count="3">
+          <div onMouseEnter="{{ c.enter }}" onMouseLeave="{{ c.leave }}" style="flex:{{ c.flex }};min-width:0;display:flex;border-right:1px solid #1B1A17;transition:flex .4s cubic-bezier(.3,.7,.1,1);opacity:{{ c.op }};cursor:default">
+            <span style="width:{{ c.bar }};background:{{ c.color }};flex:none;transition:width .4s cubic-bezier(.3,.7,.1,1)"></span>
+            <div style="padding:20px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-width:0">
+              <span style="font-family:'DM Mono',monospace;font-size:11px;color:#6E6C66">{{ c.n }}</span>
+              <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+                <span style="font-size:clamp(28px,3.4vw,44px);font-weight:700;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.02em;line-height:.9">{{ c.t }}</span>
+                <span style="font-size:14px;line-height:1.5;color:#56544E;max-width:34ch">{{ c.d }}</span>
+                <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase">{{ c.tags }}</span>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,56px) 120px">
+    <div style="border-top:1px solid #1B1A17;padding:28px 0 0;display:flex;flex-wrap:wrap;gap:24px 40px">
+      <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#BD5B45">10</span>
+        <span style="font-size:16px;font-weight:600">Without the logo</span>
+        <span style="font-size:14px;line-height:1.5;color:#6E6C66;margin-top:10px;max-width:30ch">Three vertical bands in clay, moss and slate, always in that order, and tall condensed type. The triad is recognisable at any scale, from a tote bag to a signature bar.</span>
+      </div>
+      <div style="flex:3 1 640px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="aspect-ratio:3/4;display:grid;grid-template-columns:1fr 1fr 1fr">
+            <span style="background:#BD5B45"></span><span style="background:#5F8C4A"></span><span style="background:#4B83B6"></span>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:11px;color:#6E6C66">Packaging / tote</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="aspect-ratio:3/4;background:#fff;outline:1px solid rgba(27,26,23,.2);padding:18px;display:flex;flex-direction:column;justify-content:space-between">
+            <span style="font-size:40px;font-weight:700;font-variation-settings:'wdth' 75,'opsz' 96;letter-spacing:-.03em;line-height:.85">Intake, automated.</span>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;height:10px;gap:2px"><span style="flex:20;background:#BD5B45"></span><span style="flex:10;background:#5F8C4A"></span><span style="flex:70;background:#4B83B6"></span></div>
+              <span style="font-family:'DM Mono',monospace;font-size:9px;color:#6E6C66">SW 20 · WEB 10 · AUTO 70</span>
+            </div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:11px;color:#6E6C66">Case study cover</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="aspect-ratio:3/4;background:#1B1A17;display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <span style="font-size:clamp(100px,12vw,160px);font-weight:800;font-variation-settings:'wdth' 75,'opsz' 96;line-height:.8;letter-spacing:-.04em;background-image:repeating-linear-gradient(90deg,#BD5B45 0 4px,#5F8C4A 4px 8px,#4B83B6 8px 12px);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Run</span>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:11px;color:#6E6C66">Wall graphic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sw: 8, conv: false, ch: -1 };
+  renderVals() {
+    const sw = this.state.sw;
+    const C = ['#BD5B45', '#5F8C4A', '#4B83B6'];
+    const stripeBg = sw === 0
+      ? 'linear-gradient(#1B1A17,#1B1A17)'
+      : `repeating-linear-gradient(90deg,${C[0]} 0 ${sw}px,${C[1]} ${sw}px ${sw * 2}px,${C[2]} ${sw * 2}px ${sw * 3}px)`;
+    const ch = this.state.ch;
+    const chData = [
+      ['01', 'Software', 'Custom apps and internal tools built around how your business actually runs. Owned by you.', 'apps · tools · integrations'],
+      ['02', 'Websites', 'Sites that load fast, rank well and turn visitors into calls. Designed and built in-house.', 'design · build · launch'],
+      ['03', 'Automation', 'The follow-up, intake, quoting and paperwork that runs itself, and that we keep running.', 'agents · workflows · ops']
+    ];
+    return {
+      sw,
+      stripeBg,
+      swLabel: sw === 0 ? 'Reading distance' : `Pitch ${sw * 3}px`,
+      setSw: (e) => this.setState({ sw: +e.target.value }),
+      off: this.state.conv ? 0 : 4,
+      offY: this.state.conv ? 0 : 3,
+      convLabel: this.state.conv ? 'In register → ink' : 'Three impressions, misregistered',
+      convOn: () => this.setState({ conv: true }),
+      convOff: () => this.setState({ conv: false }),
+      heroColor: ch < 0 ? '#1B1A17' : C[ch],
+      channels: chData.map(([n, t, d, tags], i) => ({
+        n, t, d, tags, color: C[i],
+        flex: ch === i ? 2 : 1,
+        op: ch < 0 || ch === i ? 1 : 0.4,
+        bar: ch === i ? '40px' : '10px',
+        enter: () => this.setState({ ch: i }),
+        leave: () => this.setState({ ch: -1 })
+      })),
+      projects: [
+        { name: 'EffectiveAgents', what: 'Our largest company. Built and run by us.', a: 55, b: 15, c: 30 },
+        { name: 'Popolo', what: 'Product, site and operations stack, launching.', a: 35, b: 40, c: 25 },
+        { name: 'Bird of Paradise Hotel', what: 'Client rebuild: website, booking and guest follow-up.', a: 10, b: 60, c: 30 }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
