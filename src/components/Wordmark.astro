@@ -1,0 +1,26 @@
+---
+// "PixelMetrics" in Newsreader. Two i's: the first dot is the lit pixel,
+// the second is an ordinary dot. Both are drawn so they sit at the same height.
+//   pixel="lime"     the lit pixel
+//   pixel="handoff"  lit, but goes dark while a live field is on screen
+//   pixel="off"      dark outline (the field holds the light)
+//   pixel="print"    for bone backgrounds: night square ringed in lime
+interface Props { size?: string; pixel?: 'lime' | 'handoff' | 'off' | 'print'; class?: string }
+const { size = '28px', pixel = 'lime', class: cls = '' } = Astro.props;
+---
+<span class:list={['wordmark', `wordmark--${pixel}`, cls]} style={`font-size:${size}`} role="img" aria-label="PixelMetrics"><span aria-hidden="true">P<span class="wm-i">ı<span class="wm-dot wm-px"></span></span>xelMetr<span class="wm-i">ı<span class="wm-dot wm-round"></span></span>cs</span></span>
+
+<style>
+  .wordmark {
+    font-family: var(--serif); font-weight: 400; font-variation-settings: 'opsz' 72;
+    letter-spacing: -.03em; line-height: 1; white-space: nowrap;
+  }
+  .wm-i { position: relative; display: inline-block; }
+  .wm-dot { position: absolute; left: calc(50% + .012em); top: .068em; transform: translate(-50%, -50%); }
+  .wm-px { width: .124em; height: .124em; background: var(--lime); }
+  .wm-round { width: .14em; height: .14em; border-radius: 50%; background: currentColor; }
+
+  .wordmark--off .wm-px { background: transparent; outline: 1px solid rgba(237, 234, 226, .45); }
+  :global(html.field-lit) .wordmark--handoff .wm-px { background: transparent; outline: 1px solid rgba(237, 234, 226, .45); }
+  .wordmark--print .wm-px { background: var(--night); outline: 2px solid var(--lime); }
+</style>

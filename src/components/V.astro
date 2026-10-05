@@ -1,0 +1,7 @@
+---
+// Renders a work.ts value; placeholders get a dashed outline.
+import type { Val } from '../data/work';
+interface Props { v: Val }
+const { v } = Astro.props;
+---
+{typeof v === 'string' ? v : <span class="todo" title="Placeholder: replace before launch">{v.todo}</span>}

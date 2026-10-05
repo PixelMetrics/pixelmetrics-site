@@ -1,0 +1,167 @@
+---
+import Base from '../layouts/Base.astro';
+import Field from '../components/Field.astro';
+import Section from '../components/Section.astro';
+import ServicesStrip from '../components/ServicesStrip.astro';
+import WorkCard from '../components/WorkCard.astro';
+import Cta from '../components/Cta.astro';
+import { BOOK_URL, method } from '../data/site';
+import { work } from '../data/work';
+---
+<Base>
+  <!-- Hero: the headline owns the largest cell; the field beside it is the business. -->
+  <div class="wrap-wide hero-wrap">
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="hero-copy">
+        <span class="eyebrow">Software · Websites · Automation</span>
+        <h1 id="hero-h" class="display">We build the systems your business <em>runs on.</em></h1>
+        <div class="hero-foot">
+          <p class="body">Custom software, websites and automation, built and run by a team that operates its own companies. One team, accountable end to end.</p>
+          <div class="actions">
+            <a class="btn btn--solid" href={BOOK_URL}>Book a 30-min scoping call</a>
+            <a class="btn" href="/work/">See what we build</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-field">
+        <Field live root="h" rows={3} min={5} k={1.25} class="qt--bare" style="position:absolute;inset:0;height:100%" />
+        <div class="operate">
+          <span class="muted">We operate</span>
+          <a href="/work/effectiveagents/">EffectiveAgents</a>
+          <a href="/work/popolo/">Popolo</a>
+          <a href="/work/bird-of-paradise/">Bird of Paradise</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <Section id="services" n="01" title="What we build" note="Five capabilities, one team. Attention resolves one cell and lights it; the rest compress. Hover across it.">
+      <ServicesStrip />
+    </Section>
+
+    <Section id="method" n="02" title="How it works" note="Four steps, nothing for you to learn. We zoom into the one step that wastes your hours, rebuild it, then keep it on.">
+      <ol class="method">
+        {method.map((m) => (
+          <li data-resolve>
+            <Field min={m.field.min} maxd={m.field.maxd} k="0.01" fx={0.97} fy={0.03} nolit={!m.lit} class="qt--sq" />
+            <span class:list={['cap', { lit: m.lit }]}>{m.cap}</span>
+            <span class="sec-num">{m.n}</span>
+            <h3>{m.t}</h3>
+            <p>{m.d}</p>
+          </li>
+        ))}
+      </ol>
+    </Section>
+
+    <Section id="work" n="03" title="Proof that’s still running" note="Work is listed by running since, not by launch date. The brand is only as good as what’s live.">
+      <div class="work-grid">
+        {work.map((p) => <WorkCard p={p} />)}
+      </div>
+      <a href="/work/" class="more">All work →</a>
+    </Section>
+
+    <Section n="04" title="Why us" note="We are operators first. Everything we sell, we already run in our own companies.">
+      <div class="why" data-resolve>
+        <div class="why-statement">
+          <span class="cell-tag">1/2 · statement</span>
+          <p class="display">We are not consultants. <em>We run this in our own companies first.</em></p>
+        </div>
+        <figure class="why-quote">
+          <span class="cell-tag">1/4 · proof</span>
+          <blockquote class="voice">“If it breaks, we feel it before you do.”</blockquote>
+          <figcaption class="eyebrow">The founders, PixelMetrics</figcaption>
+        </figure>
+        <div class="why-cells">
+          <div><strong>Custom software, not plugins</strong><span>Apps · Tools · Integrations</span></div>
+          <div><strong>Websites built to sell</strong><span>Design · Build · Launch</span></div>
+          <div><strong>Automation that holds up</strong><span>Agents · Workflows · Dashboards</span></div>
+          <div class="why-live" aria-hidden="true"><i></i><i class="why-live"><b></b><b class="on"></b><b></b><b></b></i><i></i><i></i></div>
+        </div>
+      </div>
+    </Section>
+  </div>
+
+  <div class="wrap-wide cta-wrap">
+    <Cta />
+  </div>
+</Base>
+
+<style>
+  .hero-wrap { padding-top: var(--wide-gutter); padding-bottom: 88px; }
+  .hero {
+    display: flex; flex-wrap: wrap; background: var(--ink); border: 1px solid var(--line);
+    min-height: min(820px, calc(100svh - 100px));
+  }
+  .hero-copy {
+    flex: 1 1 460px; padding: clamp(28px, 4vw, 56px) clamp(20px, 3vw, 36px);
+    display: flex; flex-direction: column; justify-content: space-between; gap: 48px;
+    border-right: 1px solid var(--line);
+  }
+  .hero h1 { font-size: clamp(52px, 6.6vw, 104px); }
+  .hero-foot { display: flex; flex-direction: column; gap: 28px; }
+  .hero-foot .body { font-size: 17px; max-width: 44ch; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-field { flex: 1 1 440px; position: relative; min-height: 440px; cursor: crosshair; }
+  .operate {
+    position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-wrap: wrap;
+    border-top: 1px solid var(--line); background: var(--ink); font-size: 12px; letter-spacing: .04em;
+  }
+  .operate > * { padding: 12px 16px; border-right: 1px solid var(--line); }
+  .operate > :last-child { border-right: 0; }
+  .operate .muted { color: var(--graphite); }
+  @media (max-width: 940px) {
+    .hero-copy { border-right: 0; border-bottom: 1px solid var(--line); }
+    .hero-field { min-height: 360px; }
+  }
+
+  /* Method */
+  .method { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 32px 16px; }
+  .method li { display: flex; flex-direction: column; gap: 10px; }
+  .cap { font-size: 12px; color: var(--graphite); }
+  .cap.lit { color: var(--lime); }
+  .method .sec-num { margin-top: 14px; }
+  .method h3 { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: -.02em; line-height: 1.05; }
+  .method p { font-size: 14px; line-height: 1.55; color: var(--muted); text-wrap: pretty; }
+
+  /* Work */
+  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+  .more { font-size: 14px; align-self: flex-start; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; }
+
+  /* Why: a recursive halving of the block */
+  .why {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto;
+    border: 1px solid var(--line); background: var(--ink);
+  }
+  .cell-tag { font-size: 10px; color: var(--faint); }
+  .why-statement {
+    grid-row: 1 / 3; border-right: 1px solid var(--line); padding: 18px;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 64px;
+  }
+  .why-statement .display { font-size: clamp(36px, 4.6vw, 64px); line-height: .98; letter-spacing: -.04em; }
+  .why-quote {
+    margin: 0; padding: 18px; border-bottom: 1px solid var(--line);
+    display: flex; flex-direction: column; gap: 20px; min-height: 220px;
+  }
+  .why-quote blockquote { margin: auto 0 0; font-size: clamp(22px, 2.2vw, 30px); }
+  .why-cells { display: grid; grid-template-columns: 1fr 1fr; }
+  .why-cells > div { padding: 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 120px; }
+  .why-cells > :nth-child(odd) { border-right: 1px solid var(--line); }
+  .why-cells > :nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+  .why-cells strong { font-family: var(--serif); font-weight: 300; font-size: 20px; letter-spacing: -.01em; line-height: 1.1; }
+  .why-cells span { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+  .why-live { display: grid !important; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; padding: 0 !important; gap: 0 !important; }
+  .why-live i { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .why-live i:nth-child(2n) { border-right: 0; }
+  .why-live i:nth-child(n + 3) { border-bottom: 0; }
+  .why-live b { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .why-live b:nth-child(2n) { border-right: 0; }
+  .why-live b:nth-child(n + 3) { border-bottom: 0; }
+  .why-live b.on { background: var(--lime); }
+  @media (max-width: 760px) {
+    .why { grid-template-columns: 1fr; }
+    .why-statement { grid-row: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+  }
+
+  .cta-wrap { padding-top: 16px; padding-bottom: 120px; }
+</style>

@@ -1,0 +1,37 @@
+---
+import Wordmark from './Wordmark.astro';
+import { EMAIL } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="row">
+      <div class="brand">
+        <Wordmark size="28px" pixel="handoff" />
+        <span class="eyebrow">Software · Websites · Automation</span>
+      </div>
+      <nav aria-label="Footer">
+        <a href="/#services">Services</a>
+        <a href="/#method">Method</a>
+        <a href="/work/">Work</a>
+        <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+      </nav>
+    </div>
+    <div class="legal">
+      <span>We build it. We run it.</span>
+      <span class="metric">© {year} PixelMetrics</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--line); padding: 48px 0 32px; }
+  .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start; }
+  .brand { display: flex; flex-direction: column; gap: 14px; }
+  nav { display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 14px; }
+  .legal {
+    margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line-faint);
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    font-size: 12px; color: var(--faint);
+  }
+</style>

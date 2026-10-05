@@ -1,0 +1,43 @@
+---
+// A case study as a resolution grid: the image takes 1/2, the facts take 1/8 each.
+import Field from './Field.astro';
+import V from './V.astro';
+import type { Project } from '../data/work';
+interface Props { p: Project }
+const { p } = Astro.props;
+---
+<a href={`/work/${p.slug}/`} class="card" data-resolve>
+  <div class="image">
+    <Field class="qt--bare" min="0.5" maxd="6" k="1.1" fx={p.focus.x} fy={p.focus.y} nolit style="position:absolute;inset:0;height:100%" />
+    <div class="image-label">
+      <span class="eyebrow">{p.relation}</span>
+      <span class="client">{p.client}</span>
+    </div>
+    <span class="todo slot">Image placeholder</span>
+  </div>
+  <dl class="facts">
+    <div><dt>Built</dt><dd><V v={p.built} /></dd></div>
+    <div><dt>Running since</dt><dd class="metric"><V v={p.runningSince} /></dd></div>
+    <div class="result"><dt>Result</dt><dd><span class="px" aria-hidden="true"></span><V v={p.result} /></dd></div>
+  </dl>
+</a>
+
+<style>
+  .card { display: flex; flex-direction: column; border: 1px solid var(--line); background: var(--ink); color: var(--bone); }
+  .card:hover { color: var(--bone); border-color: var(--line-strong); }
+  .image { position: relative; aspect-ratio: 16 / 10; border-bottom: 1px solid var(--line); overflow: hidden; }
+  .image-label {
+    position: absolute; left: 0; bottom: 0; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px;
+    background: linear-gradient(transparent, rgba(11, 11, 10, .85) 40%);
+    right: 0;
+  }
+  .client { font-family: var(--serif); font-size: clamp(26px, 2.6vw, 34px); font-weight: 300; letter-spacing: -.02em; line-height: 1; }
+  .slot { position: absolute; top: 14px; right: 14px; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding: 2px 4px; }
+  .facts { margin: 0; display: flex; flex-direction: column; }
+  .facts > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 10px 18px; border-bottom: 1px solid var(--line); }
+  .facts > div:last-child { border-bottom: 0; }
+  dt { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+  dd { margin: 0; font-size: 14px; line-height: 1.4; }
+  .px { display: inline-block; width: 6px; height: 6px; margin-right: 8px; vertical-align: middle; background: transparent; outline: 1px solid var(--line-strong); }
+  .card:hover .px { background: var(--lime); outline: 0; }
+</style>
