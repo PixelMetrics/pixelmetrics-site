@@ -6,13 +6,10 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
-  /** Site-wide cursor field: Off, Subtle (default) or Strong */
-  cursor?: 'off' | 'subtle' | 'strong';
 }
 const {
   title = 'PixelMetrics · Software, websites and automation',
   description = 'Custom software, websites and automation, built and run by a team that operates its own companies. One team, accountable end to end.',
-  cursor = 'subtle',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -34,16 +31,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
   <script is:inline>document.documentElement.classList.add('js');</script>
 </head>
-<body data-cursor={cursor}>
+<body>
   <a class="skip" href="#main">Skip to content</a>
-  <canvas class="amb" aria-hidden="true"></canvas>
-  <div class="amb-lime" aria-hidden="true"></div>
   <Header />
   <main id="main"><slot /></main>
   <Footer />
   <script>
-    import '../scripts/field.ts';
-    import '../scripts/resolve.ts';
+    import '../scripts/pixelate.ts';
   </script>
 </body>
 </html>

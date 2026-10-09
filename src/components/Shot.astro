@@ -1,0 +1,20 @@
+---
+// A project screenshot that pixels in when it scrolls into view.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props {
+  src: ImageMetadata; alt: string; widths: number[]; sizes: string;
+  /** Fill the box (object-fit: cover, top-aligned) instead of keeping the image's own shape */
+  cover?: boolean; class?: string; eager?: boolean;
+}
+const { src, alt, widths, sizes, cover, class: cls, eager } = Astro.props;
+---
+<div class:list={['shot', { 'shot--cover': cover }, cls]} data-pixelate>
+  <Image src={src} alt={alt} widths={widths} sizes={sizes} loading={eager ? 'eager' : 'lazy'} />
+</div>
+
+<style>
+  .shot { position: relative; overflow: hidden; background: var(--ink); }
+  .shot :global(img) { display: block; width: 100%; height: auto; }
+  .shot--cover :global(img) { position: absolute; inset: 0; height: 100%; object-fit: cover; object-position: top; }
+</style>

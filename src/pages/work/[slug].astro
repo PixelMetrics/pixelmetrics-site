@@ -1,9 +1,8 @@
 ---
-// Case study as a zoom: open on the whole business, resolve to the one pixel it changed.
-import { Image } from 'astro:assets';
+// Case study: the project, the one number it changed and the work, on the first screen.
 import Base from '../../layouts/Base.astro';
-import Field from '../../components/Field.astro';
 import Section from '../../components/Section.astro';
+import Shot from '../../components/Shot.astro';
 import V from '../../components/V.astro';
 import Cta from '../../components/Cta.astro';
 import { work, text, type Project } from '../../data/work';
@@ -14,70 +13,50 @@ export function getStaticPaths() {
 
 interface Props { p: Project; next: Project }
 const { p, next } = Astro.props;
-
-const zoom = [
-  { cap: '1 · the business', min: '400', maxd: undefined },
-  { cap: '4 · its functions', min: '0.5', maxd: '1' },
-  { cap: '16 · its workflows', min: '0.5', maxd: '2' },
-  { cap: '1px · the drain we fixed, now running', min: '0.5', maxd: '5', lit: true },
-];
+const [lead, ...rest] = p.images ?? [];
 ---
 <Base title={`${p.client} · Work · PixelMetrics`} description={text(p.headline)}>
   <div class="wrap">
-    <header class="intro">
-      <nav class="crumbs eyebrow" aria-label="Breadcrumb"><a href="/work/">Work</a> / <span>{p.client}</span></nav>
-      <div class="intro-row">
-        <div class="lead">
-          <span class="eyebrow">{p.relation}</span>
-          <h1 class="display">{p.client}</h1>
-          <p class="voice"><V v={p.headline} /></p>
+    <header class="top">
+      <div class="lead">
+        <nav class="crumbs eyebrow" aria-label="Breadcrumb"><a href="/work/">Work</a> / <span>{p.client}</span></nav>
+        <span class="eyebrow">{p.relation}</span>
+        <h1 class="display">{p.client}</h1>
+        <p class="voice"><V v={p.headline} /></p>
+        <div class="pixel">
+          <span class="pixel-value metric"><V v={p.pixel.value} /></span>
+          <span class="pixel-label"><V v={p.pixel.label} /></span>
         </div>
-        <div class="side">
-          <p class="body"><V v={p.lede} /></p>
-          {p.url && <a class="btn" href={p.url} rel="noopener">Visit {new URL(p.url).host} ↗</a>}
-        </div>
+        {p.url && <a class="btn" href={p.url} rel="noopener">Visit {new URL(p.url).host} ↗</a>}
+      </div>
+      <div class="lead-shot">
+        {lead
+          ? <Shot src={lead.src} alt={lead.alt} widths={[640, 1000, 1400, 2000]} sizes="(max-width: 960px) 100vw, 60vw" eager />
+          : <span class="todo slot">Case study image placeholder · 16:9</span>}
       </div>
     </header>
 
-    <section class="zoom" aria-label="Zoom from the whole business to the one pixel we changed">
-      {zoom.map((z) => (
-        <figure data-resolve>
-          <Field min={z.min} maxd={z.maxd} k="0.01" fx={p.focus.x} fy={p.focus.y} nolit={!z.lit} class="qt--sq" />
-          <figcaption class:list={{ lit: z.lit }}>{z.cap}</figcaption>
-        </figure>
-      ))}
-    </section>
+    <dl class="facts">
+      <div><dt>Client</dt><dd>{p.client}</dd></div>
+      <div><dt>Built</dt><dd><V v={p.built} /></dd></div>
+      <div><dt>Running since</dt><dd class="metric"><V v={p.runningSince} /></dd></div>
+      <div><dt>Result</dt><dd><V v={p.result} /></dd></div>
+    </dl>
 
-    <section class="pixel" aria-label="The one pixel it changed" data-resolve>
-      <span class="eyebrow"><V v={p.pixel.label} /></span>
-      <span class="pixel-value metric"><V v={p.pixel.value} /><span class="beat" aria-hidden="true"></span></span>
-      <dl class="facts">
-        <div><dt>Client</dt><dd>{p.client}</dd></div>
-        <div><dt>Built</dt><dd><V v={p.built} /></dd></div>
-        <div><dt>Running since</dt><dd class="metric"><V v={p.runningSince} /></dd></div>
-        <div><dt>Result</dt><dd><V v={p.result} /></dd></div>
-      </dl>
-    </section>
+    <p class="body lede"><V v={p.lede} /></p>
 
-    {p.images?.length ? (
-      <div class="shots">
-        <figure class="shot-frame" data-resolve>
-          <Image src={p.images[0].src} alt={p.images[0].alt} widths={[640, 1000, 1400, 2000]} sizes="(max-width: 1320px) 100vw, 1208px" />
-        </figure>
-        {p.images.length > 1 && (
-          <div class:list={['gallery', { 'with-phone': p.images.some((im) => im.phone) }]}>
-            {p.images.slice(1).map((im) => (
-              <figure class:list={['shot-frame', { phone: im.phone }]} data-resolve>
-                <Image src={im.src} alt={im.alt} widths={im.phone ? [400, 800] : [640, 1000, 1400]} sizes={im.phone ? '(max-width: 760px) 80vw, 400px' : '(max-width: 760px) 100vw, 800px'} />
-              </figure>
-            ))}
-          </div>
-        )}
-      </div>
-    ) : (
-      <div class="image" data-resolve>
-        <Field min="0.5" maxd="7" k="1.3" fx={p.focus.x} fy={p.focus.y} nolit class="qt--bare" style="position:absolute;inset:0;height:100%" />
-        <span class="todo slot">Case study image placeholder · 16:9</span>
+    {rest.length > 0 && (
+      <div class:list={['gallery', { 'with-phone': rest.some((im) => im.phone) }]}>
+        {rest.map((im) => (
+          <Shot
+            src={im.src}
+            alt={im.alt}
+            widths={im.phone ? [400, 800] : [640, 1000, 1400]}
+            sizes={im.phone ? '(max-width: 760px) 80vw, 400px' : '(max-width: 760px) 100vw, 800px'}
+            cover={im.phone}
+            class={im.phone ? 'frame phone' : 'frame'}
+          />
+        ))}
       </div>
     )}
 
@@ -102,26 +81,29 @@ const zoom = [
 </Base>
 
 <style>
-  .intro { padding: clamp(40px, 6vw, 88px) 0 clamp(32px, 5vw, 64px); display: flex; flex-direction: column; gap: 40px; }
+  .top {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 32px clamp(24px, 3vw, 48px);
+    align-items: center; padding: clamp(24px, 3vw, 40px) 0 24px;
+  }
+  .lead { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; min-width: 0; }
+  .crumbs { margin-bottom: 6px; }
   .crumbs a { color: var(--graphite); }
   .crumbs a:hover { color: var(--lime); }
   .crumbs span { color: var(--bone); }
-  .intro-row { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; justify-content: space-between; }
-  .lead { flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
-  h1 { font-size: clamp(48px, 7.4vw, 120px); line-height: .9; overflow-wrap: anywhere; }
-  .lead .voice { font-size: clamp(22px, 2.4vw, 32px); max-width: 28ch; }
-  .side { flex: 0 1 380px; display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+  h1 { font-size: clamp(44px, 5vw, 80px); line-height: .92; overflow-wrap: anywhere; }
+  .lead .voice { font-size: clamp(20px, 1.8vw, 26px); max-width: 30ch; }
+  .pixel { display: flex; align-items: baseline; gap: 14px; padding: 14px 0 6px; border-top: 1px solid var(--line); align-self: stretch; }
+  .pixel-value { font-size: clamp(48px, 5vw, 76px); line-height: .9; letter-spacing: -.04em; }
+  .pixel-label { font-size: 14px; line-height: 1.35; color: var(--muted); max-width: 22ch; }
+  .lead-shot { min-width: 0; }
+  .lead-shot :global(.shot) { border: 1px solid var(--line); }
+  .slot { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 9; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); border: 1px solid var(--line); }
+  @media (max-width: 960px) {
+    .top { grid-template-columns: 1fr; }
+  }
 
-  .zoom { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; padding-bottom: 56px; }
-  .zoom figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
-  .zoom figcaption { font-size: 12px; color: var(--graphite); }
-  .zoom figcaption.lit { color: var(--lime); }
-
-  .pixel { border-top: 1px solid var(--line-strong); padding: 28px 0 56px; display: flex; flex-direction: column; gap: 12px; }
-  .pixel-value { font-size: clamp(72px, 12vw, 176px); line-height: .9; letter-spacing: -.04em; display: flex; align-items: flex-start; gap: .12em; }
-  .pixel-value .beat { width: .08em; height: .08em; margin-top: .1em; }
-  .facts { margin: 32px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); background: var(--ink); }
-  .facts > div { padding: 12px 14px 18px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .facts { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); background: var(--ink); }
+  .facts > div { padding: 12px 14px 16px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; min-width: 0; }
   .facts > div:last-child { border-right: 0; }
   dt { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
   dd { margin: 0; font-size: 15px; line-height: 1.4; }
@@ -131,20 +113,17 @@ const zoom = [
     .facts > div:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
   }
 
-  .image { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--line); background: var(--ink); margin-bottom: 72px; overflow: hidden; }
-  .slot { position: absolute; left: 18px; bottom: 16px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding: 2px 4px; }
+  .lede { max-width: 62ch; margin: 40px 0; font-size: 17px; }
 
-  .shots { display: grid; gap: 16px; margin-bottom: 72px; }
-  .shot-frame { margin: 0; border: 1px solid var(--line); background: var(--ink); overflow: hidden; }
-  .gallery { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .gallery { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 72px; }
+  .gallery :global(.frame) { border: 1px solid var(--line); }
   .gallery.with-phone { grid-template-columns: 2fr 1fr; }
-  .gallery.with-phone .phone { grid-column: 2; grid-row: 1 / span 2; }
-  .gallery.with-phone .phone img { height: 100%; object-fit: cover; object-position: top; }
+  .gallery.with-phone :global(.phone) { grid-column: 2; grid-row: 1 / span 2; }
   @media (max-width: 760px) {
     .gallery.with-phone { grid-template-columns: 1fr; }
-    .gallery.with-phone .phone { grid-column: auto; grid-row: auto; max-width: 360px; justify-self: center; }
+    .gallery.with-phone :global(.phone) { grid-column: auto; grid-row: auto; width: 100%; max-width: 360px; aspect-ratio: 923 / 2000; justify-self: center; }
   }
-  .shot-frame img { display: block; width: 100%; height: auto; }
+
   .chapter { font-size: clamp(22px, 2.2vw, 30px); max-width: 34ch; }
   .points {
     list-style: none; margin: 0; padding: 0;

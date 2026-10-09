@@ -9,9 +9,16 @@ export const services = [
   { n: '05', t: 'Process', tags: 'Audit · Fix · Run', d: 'Before we automate anything, we fix the steps that waste your hours. Fewer steps, then no human needed for the rest.' },
 ];
 
-export const method: { n: string; t: string; d: string; field: { min: string; maxd?: string }; cap: string; lit?: boolean }[] = [
-  { n: '01', t: 'We sit with you', d: 'One call. You walk us through your week. No tech questions, no homework.', field: { min: '400' }, cap: '1 · your business' },
-  { n: '02', t: 'We find the drain', d: 'The calls you miss, the quotes you retype, the follow-up nobody gets to.', field: { min: '0.5', maxd: '2' }, cap: '16 · its workflows' },
-  { n: '03', t: 'We build it in', d: 'It works inside your phone, your email, your systems. Nothing new to log into.', field: { min: '0.5', maxd: '4' }, cap: '1 step · rebuilt' },
-  { n: '04', t: 'We run it', d: 'You don’t manage it. If something breaks, that’s our problem, not yours.', field: { min: '0.5', maxd: '5' }, cap: '1px · now running', lit: true },
+export const method = [
+  { n: '01', t: 'We sit with you', d: 'One call. You walk us through your week. No tech questions, no homework.' },
+  { n: '02', t: 'We find the drain', d: 'The calls you miss, the quotes you retype, the follow-up nobody gets to.' },
+  { n: '03', t: 'We build it in', d: 'It works inside your phone, your email, your systems. Nothing new to log into.' },
+  { n: '04', t: 'We run it', d: 'You don’t manage it. If something breaks, that’s our problem, not yours.' },
+];
+
+// Results shown under the homepage hero. Each links to its case study.
+export const proof = [
+  { value: '7 min', label: 'Median time from enquiry to agent', client: 'EffectiveAgents', slug: 'effectiveagents' },
+  { value: '15 days', label: 'From first line of code to live bookings', client: 'Bird of Paradise Hotel', slug: 'bird-of-paradise' },
+  { value: '0', label: 'Recipes that forget who they came from', client: 'Popolo', slug: 'popolo' },
 ];

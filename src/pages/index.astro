@@ -1,37 +1,40 @@
 ---
 import Base from '../layouts/Base.astro';
-import Field from '../components/Field.astro';
 import Section from '../components/Section.astro';
 import ServicesStrip from '../components/ServicesStrip.astro';
+import Shot from '../components/Shot.astro';
 import WorkCard from '../components/WorkCard.astro';
 import Cta from '../components/Cta.astro';
-import { BOOK_URL, method } from '../data/site';
+import { BOOK_URL, method, proof } from '../data/site';
 import { work } from '../data/work';
+const featured = work.find((p) => p.slug === 'bird-of-paradise')!;
 ---
 <Base>
-  <!-- Hero: the headline owns the largest cell; the field beside it is the business. -->
+  <!-- Hero: the statement and the proof share the first screen. -->
   <div class="wrap-wide hero-wrap">
     <section class="hero" aria-labelledby="hero-h">
       <div class="hero-copy">
         <span class="eyebrow">Software · Websites · Automation</span>
         <h1 id="hero-h" class="display">We build the systems your business <em>runs on.</em></h1>
-        <div class="hero-foot">
-          <p class="body">Custom software, websites and automation, built and run by a team that operates its own companies. One team, accountable end to end.</p>
-          <div class="actions">
-            <a class="btn btn--solid" href={BOOK_URL}>Book a 30-min scoping call</a>
-            <a class="btn" href="/work/">See what we build</a>
-          </div>
+        <p class="body">Custom software, websites and automation, built and run by a team that operates its own companies. One team, accountable end to end.</p>
+        <div class="actions">
+          <a class="btn btn--solid" href={BOOK_URL}>Book a 30-min scoping call</a>
+          <a class="btn" href="/work/">See what we build</a>
         </div>
       </div>
-      <div class="hero-field">
-        <Field live root="h" rows={3} min={5} k={1.25} class="qt--bare" style="position:absolute;inset:0;height:100%" />
-        <div class="operate">
-          <span class="muted">We operate</span>
-          <a href="/work/effectiveagents/">EffectiveAgents</a>
-          <a href="/work/popolo/">Popolo</a>
-          <a href="/work/bird-of-paradise/">Bird of Paradise</a>
-        </div>
-      </div>
+      <a class="hero-work" href={`/work/${featured.slug}/`}>
+        <Shot src={featured.images![0].src} alt={featured.images![0].alt} widths={[640, 1000, 1400]} sizes="(max-width: 940px) 100vw, 55vw" eager />
+        <span class="hero-caption"><span class="eyebrow">Featured · {featured.relation}</span><span>{featured.client} →</span></span>
+      </a>
+      <ul class="proof" aria-label="Results from our work">
+        {proof.map((r) => (
+          <li><a href={`/work/${r.slug}/`}>
+            <span class="proof-value metric">{r.value}</span>
+            <span class="proof-label">{r.label}</span>
+            <span class="eyebrow">{r.client}</span>
+          </a></li>
+        ))}
+      </ul>
     </section>
   </div>
 
@@ -40,12 +43,10 @@ import { work } from '../data/work';
       <ServicesStrip />
     </Section>
 
-    <Section id="method" n="02" title="How it works" note="Four steps, nothing for you to learn. We zoom into the one step that wastes your hours, rebuild it, then keep it on.">
+    <Section id="method" n="02" title="How it works" note="Four steps, nothing for you to learn. We find the one step that wastes your hours, rebuild it, then keep it running.">
       <ol class="method">
         {method.map((m) => (
-          <li data-resolve>
-            <Field min={m.field.min} maxd={m.field.maxd} k="0.01" fx={0.97} fy={0.03} nolit={!m.lit} class="qt--sq" />
-            <span class:list={['cap', { lit: m.lit }]}>{m.cap}</span>
+          <li>
             <span class="sec-num">{m.n}</span>
             <h3>{m.t}</h3>
             <p>{m.d}</p>
@@ -62,7 +63,7 @@ import { work } from '../data/work';
     </Section>
 
     <Section n="04" title="Why us" note="We are operators first. Everything we sell, we already run in our own companies.">
-      <div class="why" data-resolve>
+      <div class="why">
         <div class="why-statement">
           <span class="cell-tag">1/2 · statement</span>
           <p class="display">We are not consultants. <em>We run this in our own companies first.</em></p>
@@ -76,7 +77,7 @@ import { work } from '../data/work';
           <div><strong>Custom software, not plugins</strong><span>Apps · Tools · Integrations</span></div>
           <div><strong>Websites built to sell</strong><span>Design · Build · Launch</span></div>
           <div><strong>Automation that holds up</strong><span>Agents · Workflows · Dashboards</span></div>
-          <div class="why-live" aria-hidden="true"><i></i><i class="why-live"><b></b><b class="on"></b><b></b><b></b></i><i></i><i></i></div>
+          <div><strong>Process before automation</strong><span>Audit · Fix · Run</span></div>
         </div>
       </div>
     </Section>
@@ -88,39 +89,39 @@ import { work } from '../data/work';
 </Base>
 
 <style>
-  .hero-wrap { padding-top: var(--wide-gutter); padding-bottom: 88px; }
+  .hero-wrap { padding-top: var(--wide-gutter); padding-bottom: 72px; }
   .hero {
-    display: flex; flex-wrap: wrap; background: var(--ink); border: 1px solid var(--line);
-    min-height: min(820px, calc(100svh - 100px));
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    background: var(--ink); border: 1px solid var(--line);
   }
   .hero-copy {
-    flex: 1 1 460px; padding: clamp(28px, 4vw, 56px) clamp(20px, 3vw, 36px);
-    display: flex; flex-direction: column; justify-content: space-between; gap: 48px;
+    padding: clamp(28px, 3.4vw, 48px) clamp(20px, 3vw, 36px);
+    display: flex; flex-direction: column; justify-content: center; gap: 24px;
     border-right: 1px solid var(--line);
   }
-  .hero h1 { font-size: clamp(52px, 6.6vw, 104px); }
-  .hero-foot { display: flex; flex-direction: column; gap: 28px; }
-  .hero-foot .body { font-size: 17px; max-width: 44ch; }
-  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .hero-field { flex: 1 1 440px; position: relative; min-height: 440px; cursor: crosshair; }
-  .operate {
-    position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-wrap: wrap;
-    border-top: 1px solid var(--line); background: var(--ink); font-size: 12px; letter-spacing: .04em;
-  }
-  .operate > * { padding: 12px 16px; border-right: 1px solid var(--line); }
-  .operate > :last-child { border-right: 0; }
-  .operate .muted { color: var(--graphite); }
+  .hero h1 { font-size: clamp(48px, 5.6vw, 88px); }
+  .hero-copy .body { font-size: 17px; max-width: 44ch; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .hero-work { display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: clamp(16px, 2.4vw, 32px); color: var(--bone); }
+  .hero-work :global(.shot) { border: 1px solid var(--line); }
+  .hero-caption { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; font-size: 14px; }
+  .hero-work:hover .hero-caption > :last-child { color: var(--lime); }
+  .proof { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+  .proof li + li { border-left: 1px solid var(--line); }
+  .proof a { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 16px; row-gap: 4px; align-items: baseline; padding: 16px clamp(20px, 3vw, 36px); color: var(--bone); }
+  .proof a:hover .proof-value { color: var(--lime); }
+  .proof-value { grid-row: 1 / 3; font-size: clamp(32px, 3.4vw, 48px); line-height: 1; letter-spacing: -.03em; }
+  .proof-label { font-size: 14px; line-height: 1.35; }
   @media (max-width: 940px) {
+    .hero { grid-template-columns: 1fr; }
     .hero-copy { border-right: 0; border-bottom: 1px solid var(--line); }
-    .hero-field { min-height: 360px; }
+    .proof { grid-template-columns: 1fr; }
+    .proof li + li { border-left: 0; border-top: 1px solid var(--line); }
   }
 
   /* Method */
-  .method { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 32px 16px; }
-  .method li { display: flex; flex-direction: column; gap: 10px; }
-  .cap { font-size: 12px; color: var(--graphite); }
-  .cap.lit { color: var(--lime); }
-  .method .sec-num { margin-top: 14px; }
+  .method { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px 16px; }
+  .method li { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--line-quiet); padding-top: 14px; }
   .method h3 { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: -.02em; line-height: 1.05; }
   .method p { font-size: 14px; line-height: 1.55; color: var(--muted); text-wrap: pretty; }
 
@@ -150,18 +151,10 @@ import { work } from '../data/work';
   .why-cells > :nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
   .why-cells strong { font-family: var(--serif); font-weight: 300; font-size: 20px; letter-spacing: -.01em; line-height: 1.1; }
   .why-cells span { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
-  .why-live { display: grid !important; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; padding: 0 !important; gap: 0 !important; }
-  .why-live i { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .why-live i:nth-child(2n) { border-right: 0; }
-  .why-live i:nth-child(n + 3) { border-bottom: 0; }
-  .why-live b { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .why-live b:nth-child(2n) { border-right: 0; }
-  .why-live b:nth-child(n + 3) { border-bottom: 0; }
-  .why-live b.on { background: var(--lime); }
   @media (max-width: 760px) {
     .why { grid-template-columns: 1fr; }
     .why-statement { grid-row: auto; border-right: 0; border-bottom: 1px solid var(--line); }
   }
 
-  .cta-wrap { padding-top: 16px; padding-bottom: 120px; }
+  .cta-wrap { padding-top: 16px; padding-bottom: 96px; }
 </style>

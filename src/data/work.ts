@@ -29,8 +29,6 @@ export interface Project {
   pixel: { label: Val; value: Val };
   /** Screenshots; the first is the card and case-study lead image */
   images?: { src: ImageMetadata; alt: string; phone?: boolean }[];
-  /** Where the zoom lands, 0..1 */
-  focus: { x: number; y: number };
   chapters: { t: string; d: Val; points?: Val[] }[];
 }
 
@@ -46,7 +44,6 @@ export const work: Project[] = [
     runningSince: '2023 · in-house since March 2026',
     result: 'Enquiry to agent: 7 min median',
     pixel: { label: 'Median time from enquiry to agent', value: '7 min' },
-    focus: { x: 0.97, y: 0.03 },
     images: [{ src: eaIntake, alt: 'EffectiveAgents seller intake form, step 1 of 5: property type and address.' }],
     chapters: [
       {
@@ -105,7 +102,6 @@ export const work: Project[] = [
     runningSince: 'Live in soft launch',
     result: 'Recipes without a source: 0',
     pixel: { label: 'Recipes that forget who they came from', value: '0' },
-    focus: { x: 0.22, y: 0.7 },
     images: [
       { src: popoloLanding, alt: 'Popolo landing page: “The cookbook you’ll still be adding to in ten years”, beside a recipe for Nonna’s ragù.' },
       { src: popoloTable, alt: 'A sample family Table, “The Popolos”, with each recipe showing who it came from and how often it has been cooked.' },
@@ -163,7 +159,6 @@ export const work: Project[] = [
     runningSince: 'September 2026',
     result: 'Bookings retyped by hand: 0',
     pixel: { label: 'Bookings retyped by hand', value: '0' },
-    focus: { x: 0.68, y: 0.24 },
     images: [
       { src: bopHome, alt: 'Bird of Paradise Hotel homepage: “Two minutes from Jacó Beach, breakfast included”, with the date picker and Check availability button.' },
       { src: bopPackages, alt: 'Packages page: “Everything in one booking”, with prices live from the hotel’s booking system.' },

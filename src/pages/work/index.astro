@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Field from '../../components/Field.astro';
+import Shot from '../../components/Shot.astro';
 import V from '../../components/V.astro';
 import Cta from '../../components/Cta.astro';
 import { work } from '../../data/work';
@@ -12,14 +12,16 @@ import { work } from '../../data/work';
         <span class="eyebrow">Work · Listed by running since</span>
         <h1 class="display">Still <em>running</em><span class="stop" aria-hidden="true"></span></h1>
       </div>
-      <p class="body">Each project opens on the whole business and zooms to the one pixel it changed. We list work by how long it has been live, because the brand is only as good as what’s still running.</p>
+      <p class="body">Each project shows the business, the work and the one number it changed. We list it by how long it has been live, because the brand is only as good as what’s still running.</p>
     </header>
 
     <ol class="list">
       {work.map((p, i) => (
         <li>
-          <a href={`/work/${p.slug}/`} class="row" data-resolve>
-            <Field min="0.5" maxd="5" k="1.2" fx={p.focus.x} fy={p.focus.y} nolit class="qt--sq thumb" />
+          <a href={`/work/${p.slug}/`} class="row">
+            {p.images?.[0]
+              ? <Shot src={p.images[0].src} alt={p.images[0].alt} widths={[400, 800]} sizes="(max-width: 960px) 40vw, 280px" cover class="thumb" />
+              : <span class="thumb thumb--empty todo">Image placeholder</span>}
             <span class="n sec-num">{String(i + 1).padStart(2, '0')}</span>
             <span class="main">
               <span class="eyebrow">{p.relation}</span>
@@ -42,22 +44,23 @@ import { work } from '../../data/work';
 
 <style>
   .intro {
-    padding: clamp(56px, 9vw, 128px) 0 clamp(40px, 6vw, 80px);
+    padding: clamp(32px, 4vw, 56px) 0 clamp(28px, 3vw, 40px);
     display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; justify-content: space-between;
   }
-  .lead { flex: 1 1 520px; display: flex; flex-direction: column; gap: 28px; }
-  h1 { font-size: clamp(64px, 11vw, 168px); line-height: .88; }
+  .lead { flex: 1 1 520px; display: flex; flex-direction: column; gap: 16px; }
+  h1 { font-size: clamp(56px, 7vw, 104px); line-height: .9; }
   .intro .body { flex: 0 1 380px; }
 
   .list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
   .list li { border-bottom: 1px solid var(--line); }
   .row {
-    display: grid; grid-template-columns: 140px 48px minmax(0, 1fr) minmax(0, 1.1fr);
-    gap: 24px; align-items: start; padding: 28px 0; color: var(--bone);
+    display: grid; grid-template-columns: 280px 40px minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 24px; align-items: start; padding: 24px 0; color: var(--bone);
   }
   .row:hover { color: var(--bone); }
   .row:hover .client { color: var(--lime); }
-  .thumb { width: 140px; }
+  .row :global(.thumb) { width: 100%; aspect-ratio: 16 / 10; border: 1px solid var(--line); }
+  .thumb--empty { display: flex; align-items: center; justify-content: center; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
   .main { display: flex; flex-direction: column; gap: 10px; }
   .client { font-family: var(--serif); font-size: clamp(32px, 3.6vw, 48px); font-weight: 300; letter-spacing: -.03em; line-height: 1; }
   .headline { font-size: 15px; line-height: 1.55; color: var(--muted); max-width: 44ch; }
@@ -68,8 +71,7 @@ import { work } from '../../data/work';
   dd { margin: 0; font-size: 14px; line-height: 1.4; }
 
   @media (max-width: 960px) {
-    .row { grid-template-columns: 96px minmax(0, 1fr); }
-    .thumb { width: 96px; }
+    .row { grid-template-columns: minmax(0, 1fr); }
     .n { display: none; }
     .facts { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); padding-top: 14px; }
     .facts > div:first-child { padding-left: 0; }

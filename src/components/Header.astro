@@ -6,7 +6,7 @@ const onWork = path.startsWith('/work');
 ---
 <header class="site-header">
   <div class="bar wrap-wide">
-    <a href="/" class="home" aria-label="PixelMetrics home"><Wordmark size="28px" pixel="handoff" /></a>
+    <a href="/" class="home" aria-label="PixelMetrics home"><Wordmark size="24px" /></a>
     <nav aria-label="Main">
       <a href="/#services" class="nav-sm">Services</a>
       <a href="/#method" class="nav-sm">Method</a>
@@ -24,11 +24,12 @@ const onWork = path.startsWith('/work');
   }
   .bar {
     display: flex; align-items: center; justify-content: space-between; gap: 20px;
-    padding-top: 18px; padding-bottom: 18px;
+    padding-top: 12px; padding-bottom: 12px;
   }
   .home { display: inline-flex; }
   .home:hover { color: var(--bone); }
   nav { display: flex; gap: 28px; font-size: 14px; align-items: center; }
+  nav .btn { padding: 8px 14px; }
   nav a[aria-current='page'] { color: var(--lime); }
   @media (max-width: 680px) {
     .nav-sm { display: none; }

@@ -1,31 +1,28 @@
 ---
-import Field from './Field.astro';
 import { BOOK_URL } from '../data/site';
 ---
 <section class="cta" aria-labelledby="cta-h">
-  <div class="copy" data-resolve>
+  <div class="copy">
     <span class="eyebrow">Book a 30-min scoping call</span>
     <h2 id="cta-h" class="display">Tell us what needs building<span class="stop" aria-hidden="true"></span></h2>
+  </div>
+  <div class="side">
     <p class="body">Thirty minutes. Tell us what is manual, slow or broken. We tell you what we would build, what it takes and when it goes live. No slides, no jargon, no pressure to sign anything.</p>
     <div class="actions">
       <a class="btn btn--solid" href={BOOK_URL}>Book the scoping call</a>
       <span class="eyebrow">One call · No retainer talk</span>
     </div>
   </div>
-  <div class="field">
-    <Field min="0.5" maxd="7" k="1.4" fx={0.86} fy={0.18} nolit class="qt--bare" style="position:absolute;inset:0;height:100%" />
-  </div>
 </section>
 
 <style>
-  .cta { display: flex; flex-wrap: wrap; border: 1px solid var(--line); background: var(--ink); }
-  .copy {
-    flex: 1 1 520px; padding: clamp(32px, 5vw, 72px) clamp(20px, 3vw, 44px);
-    display: flex; flex-direction: column; gap: 28px; border-right: 1px solid var(--line);
+  .cta {
+    display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: flex-end; justify-content: space-between;
+    border: 1px solid var(--line); background: var(--ink); padding: clamp(32px, 5vw, 72px) clamp(20px, 3vw, 44px);
   }
+  .copy { flex: 1 1 520px; display: flex; flex-direction: column; gap: 24px; }
   h2 { font-size: clamp(48px, 6.6vw, 104px); }
-  .body { max-width: 46ch; font-size: 17px; }
+  .side { flex: 0 1 420px; display: flex; flex-direction: column; gap: 24px; }
+  .body { font-size: 17px; }
   .actions { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; }
-  .field { flex: 1 1 320px; position: relative; min-height: 320px; }
-  @media (max-width: 900px) { .copy { border-right: 0; border-bottom: 1px solid var(--line); } }
 </style>
