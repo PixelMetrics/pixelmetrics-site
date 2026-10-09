@@ -2,6 +2,10 @@
 // with a dashed outline on the site until it is replaced with real content.
 // Content comes from write-ups of each project's repository (October 2026).
 
+import type { ImageMetadata } from 'astro';
+import bopHome from '../assets/work/bird-of-paradise-homepage.webp';
+import eaIntake from '../assets/work/effectiveagents-intake.webp';
+
 export type Val = string | { todo: string };
 export const todo = (text: string): Val => ({ todo: text });
 export const text = (v: Val) => (typeof v === 'string' ? v : v.todo);
@@ -18,6 +22,8 @@ export interface Project {
   result: Val;
   /** The one pixel the project changed, e.g. "Missed calls: 0" */
   pixel: { label: Val; value: Val };
+  /** Screenshots; the first is the card and case-study lead image */
+  images?: { src: ImageMetadata; alt: string }[];
   /** Where the zoom lands, 0..1 */
   focus: { x: number; y: number };
   chapters: { t: string; d: Val; points?: Val[] }[];
@@ -33,9 +39,10 @@ export const work: Project[] = [
     lede: 'EffectiveAgents ranks real estate agents by their actual sales in each city, so buyers and sellers can find a proven local agent for free. It earns a referral fee when a matched client closes. It is the largest business we operate, and we took over its code from outside developers in March 2026.',
     built: 'Software · Website · Automation',
     runningSince: '2023 · in-house since March 2026',
-    result: todo('Enquiry to agent: 5 min'),
-    pixel: { label: 'From enquiry to agent', value: todo('5 min') },
+    result: 'Enquiry to agent: 7 min median',
+    pixel: { label: 'Median time from enquiry to agent', value: '7 min' },
     focus: { x: 0.97, y: 0.03 },
+    images: [{ src: eaIntake, alt: 'EffectiveAgents seller intake form, step 1 of 5: property type and address.' }],
     chapters: [
       {
         t: 'The business',
@@ -60,7 +67,7 @@ export const work: Project[] = [
         t: 'What we built',
         d: 'An automatic release that checks, scores and matches every new lead to the best local agents, and only asks a person when it matters.',
         points: [
-          'New leads are checked, scored and released to the top three local agents with no one pressing a button. Staff can switch it on or off at any time.',
+          'When switched on, new leads are checked, scored and released to the top three local agents with no one pressing a button. Staff control the switch.',
           'Before going live, it ran quietly beside the team for weeks, recording how often it picked the same agents a person did.',
           'When a referred client’s home sells, goes under contract or comes back on the market, the team hears about it, including sales the agent never reported.',
           'Agents get automatic reminders for unsigned agreements, unanswered meeting requests and unpaid referral fees, and can pay online.',
@@ -148,6 +155,7 @@ export const work: Project[] = [
     result: 'Bookings retyped by hand: 0',
     pixel: { label: 'Bookings retyped by hand', value: '0' },
     focus: { x: 0.68, y: 0.24 },
+    images: [{ src: bopHome, alt: 'Bird of Paradise Hotel homepage: “Two minutes from Jacó Beach, breakfast included”, with the date picker and Check availability button.' }],
     chapters: [
       {
         t: 'The business',
