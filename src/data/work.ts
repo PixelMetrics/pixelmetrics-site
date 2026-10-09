@@ -50,8 +50,8 @@ export const work: Project[] = [
     relation: 'We operate · launching',
     url: 'https://getpopolo.com',
     headline: 'A family cookbook that catches recipes before they get lost in the group chat.',
-    lede: 'Popolo is a personal cookbook for keeping family recipes for good, shared in groups it calls tables. We built its iPhone app, designed to get a recipe from a chat, a video or a handwritten card into the cookbook in under a minute.',
-    built: 'Software',
+    lede: 'Popolo is a personal cookbook for keeping family recipes for good, shared in groups it calls tables. We built the website first. An iPhone app is on the way.',
+    built: 'Software · Website',
     runningSince: todo('Launching 2026'),
     result: todo('Recipes rescued: count'),
     pixel: { label: 'Recipes rescued from chats, screenshots and cards', value: todo('000') },
@@ -59,7 +59,7 @@ export const work: Project[] = [
     chapters: [
       {
         t: 'The business',
-        d: 'A personal cookbook for families who want their recipes kept for good. Families share them in groups called tables, on the web and now on the iPhone.',
+        d: 'A personal cookbook for families who want their recipes kept for good. Families share them in groups called tables.',
       },
       {
         t: 'The drain',
@@ -67,22 +67,25 @@ export const work: Project[] = [
       },
       {
         t: 'What we built',
-        d: 'An iPhone app that turns any of those into a draft recipe in a couple of taps. Most of it was built in its first five days.',
+        d: todo('The Popolo website: what it does for a family, in two sentences. From the website repository write-up.'),
+        points: [
+          todo('Website capability, from the write-up.'),
+          todo('Website capability, from the write-up.'),
+          todo('Website capability, from the write-up.'),
+        ],
+      },
+      {
+        t: 'How we run it',
+        d: todo('What runs on its own behind the website, and what happens when something fails.'),
+      },
+      {
+        t: 'Next: the iPhone app',
+        d: 'In progress. An app that turns a chat link, a video or a handwritten card into a draft recipe in a couple of taps, designed to take under a minute.',
         points: [
           'Share a web page, video or screenshot to Popolo straight from the phone’s share menu.',
           'Photograph a handwritten card. The app reads it and keeps the original photo with the recipe for good.',
           'One review screen flags anything missing and puts the recipe on a family table.',
           'Cooking mode keeps the screen awake, shows one step at a time and lets you peek at the ingredients.',
-          'A one-line note after cooking goes into the table’s record of that recipe.',
-          'Video captions are read, and followed to the full recipe when they link to one.',
-        ],
-      },
-      {
-        t: 'How we run it',
-        d: 'Recipe reading runs on a hosted backend. When something can’t load, the app says so plainly and offers to try again.',
-        points: [
-          'No streaks, reminders or digests, by design.',
-          todo('Backend monitoring and alerts: confirm what exists and who is told.'),
         ],
       },
     ],
