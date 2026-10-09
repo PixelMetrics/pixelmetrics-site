@@ -167,6 +167,13 @@ window.addEventListener('pointermove', (e) => {
 }, { passive: true });
 document.addEventListener('pointerout', (e) => { if (!e.relatedTarget) mouse = null; });
 
+// Halo radius (px), line strength and how fast the trail clears, per setting.
+// Subtle is the site default; it was toned down from the prototype's values.
+const AMB = {
+  subtle: { R: 120, base: 0.026, fade: 0.2 },
+  strong: { R: 300, base: 0.075, fade: 0.14 },
+};
+
 function drawAmb() {
   if (!amb) return;
   const mode = (document.body.dataset.cursor ?? 'subtle').toLowerCase();
@@ -178,10 +185,11 @@ function drawAmb() {
   if (blocked) { if (ambLime) ambLime.style.opacity = '0'; if (++ambIdle > 40) return; }
   else ambIdle = 0;
 
+  const { R, base, fade } = mode === 'strong' ? AMB.strong : AMB.subtle;
   const w = window.innerWidth, h = window.innerHeight;
   const ctx = sizeCanvas(amb, w, h);
   ctx.globalCompositeOperation = 'destination-out';
-  ctx.fillStyle = 'rgba(0,0,0,.14)';
+  ctx.fillStyle = `rgba(0,0,0,${fade})`;
   ctx.fillRect(0, 0, w, h);
   ctx.globalCompositeOperation = 'source-over';
   if (blocked || !m) return;
@@ -189,8 +197,6 @@ function drawAmb() {
   if (!ap) ap = { x: m.x, y: m.y };
   ap.x += (m.x - ap.x) * 0.22; ap.y += (m.y - ap.y) * 0.22;
   const p = ap;
-  const strong = mode === 'strong';
-  const R = strong ? 300 : 170, base = strong ? 0.075 : 0.045;
   const root = 128, min = 5, k = 1.15;
   const oy = -(window.scrollY % root);
 
