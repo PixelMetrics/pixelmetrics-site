@@ -29,10 +29,10 @@ export const work: Project[] = [
     client: 'EffectiveAgents',
     relation: 'We operate · our largest',
     url: 'https://www.effectiveagents.com',
-    headline: 'A referral business where new leads no longer wait for someone to press a button.',
-    lede: 'EffectiveAgents ranks real estate agents by their actual sales in each city, so buyers and sellers can find a proven local agent for free. It earns a referral fee when a matched client closes, and it is the largest business we operate.',
+    headline: 'We took over the code in March. By July, new leads could reach agents with no one pressing a button.',
+    lede: 'EffectiveAgents ranks real estate agents by their actual sales in each city, so buyers and sellers can find a proven local agent for free. It earns a referral fee when a matched client closes. It is the largest business we operate, and we took over its code from outside developers in March 2026.',
     built: 'Software · Website · Automation',
-    runningSince: '2023',
+    runningSince: '2023 · in-house since March 2026',
     result: todo('Enquiry to agent: 5 min'),
     pixel: { label: 'From enquiry to agent', value: todo('5 min') },
     focus: { x: 0.97, y: 0.03 },
@@ -44,6 +44,17 @@ export const work: Project[] = [
       {
         t: 'The drain',
         d: 'Releasing a new lead was the core revenue workflow, and it was entirely manual. Someone had to check each enquiry was real, pick the best agents and press release. If that person was busy, asleep or on holiday, leads sat. The old dashboard even timed the wrong thing: a lead could be assigned in 30 seconds and then sit untouched for days.',
+      },
+      {
+        t: 'Since March',
+        d: 'More than 2,000 changes in seven months, against about 3,000 in the three years before.',
+        points: [
+          'March: error reporting and real speed-to-release figures on the dashboard.',
+          'March to April: the new matching ran in shadow beside the team.',
+          'May: referral fees paid online.',
+          'July: 16 scheduled jobs moved off an ageing server onto the new platform.',
+          'July: automatic lead release ready, with an on/off switch for staff.',
+        ],
       },
       {
         t: 'What we built',
