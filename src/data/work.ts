@@ -52,9 +52,9 @@ export const work: Project[] = [
     headline: 'A family cookbook that gets recipes out of the group chat, and remembers who they came from.',
     lede: 'Popolo is a website for keeping family recipes in the family, each one tagged with the person it came from. Families share them at private Tables. An iPhone app is on the way.',
     built: 'Software · Website · Automation',
-    runningSince: todo('Summer 2026'),
-    result: todo('Recipes preserved: count'),
-    pixel: { label: 'Recipes preserved', value: todo('000') },
+    runningSince: 'Live in soft launch',
+    result: 'Recipes without a source: 0',
+    pixel: { label: 'Recipes that forget who they came from', value: '0' },
     focus: { x: 0.22, y: 0.7 },
     chapters: [
       {
