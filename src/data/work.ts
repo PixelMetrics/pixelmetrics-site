@@ -1,7 +1,6 @@
 // Case studies. Anything wrapped in todo() is placeholder copy and renders
 // with a dashed outline on the site until it is replaced with real content.
-// Popolo and Bird of Paradise come from write-ups of their repositories
-// (October 2026). EffectiveAgents is still placeholder.
+// Content comes from write-ups of each project's repository (October 2026).
 
 export type Val = string | { todo: string };
 export const todo = (text: string): Val => ({ todo: text });
@@ -29,19 +28,47 @@ export const work: Project[] = [
     slug: 'effectiveagents',
     client: 'EffectiveAgents',
     relation: 'We operate · our largest',
-    url: 'https://effectiveagents.com',
-    headline: todo('The company we run every day, on the systems we built for it.'),
-    lede: todo('Describe the business in two sentences: who it serves, how big it is, and what the team spends its week doing.'),
-    built: todo('Software · Automation'),
-    runningSince: todo('2023'),
-    result: todo('Missed calls: 0'),
-    pixel: { label: todo('Missed calls'), value: todo('0') },
+    url: 'https://www.effectiveagents.com',
+    headline: 'A referral business where new leads no longer wait for someone to press a button.',
+    lede: 'EffectiveAgents ranks real estate agents by their actual sales in each city, so buyers and sellers can find a proven local agent for free. It earns a referral fee when a matched client closes, and it is the largest business we operate.',
+    built: 'Software · Website · Automation',
+    runningSince: '2023',
+    result: todo('Enquiry to agent: 5 min'),
+    pixel: { label: 'From enquiry to agent', value: todo('5 min') },
     focus: { x: 0.97, y: 0.03 },
     chapters: [
-      { t: 'The business', d: todo('What the company does, and the whole of it, before we zoomed in.') },
-      { t: 'The drain', d: todo('The one step that was wasting hours. Name it plainly and put a number on it.') },
-      { t: 'What we built', d: todo('What replaced it: the software, the automation, the screens people actually touch.') },
-      { t: 'How we run it', d: todo('Who watches it, what happens when it breaks, and how long it has been running.') },
+      {
+        t: 'The business',
+        d: 'A platform that ranks real estate agents by their real sales results, city by city. It serves home buyers and sellers, a large network of agents, and partners such as mortgage companies and nonprofits.',
+      },
+      {
+        t: 'The drain',
+        d: 'Releasing a new lead was the core revenue workflow, and it was entirely manual. Someone had to check each enquiry was real, pick the best agents and press release. If that person was busy, asleep or on holiday, leads sat. The old dashboard even timed the wrong thing: a lead could be assigned in 30 seconds and then sit untouched for days.',
+      },
+      {
+        t: 'What we built',
+        d: 'An automatic release that checks, scores and matches every new lead to the best local agents, and only asks a person when it matters.',
+        points: [
+          'New leads are checked, scored and released to the top three local agents with no one pressing a button. Staff can switch it on or off at any time.',
+          'Before going live, it ran quietly beside the team for weeks, recording how often it picked the same agents a person did.',
+          'When a referred client’s home sells, goes under contract or comes back on the market, the team hears about it, including sales the agent never reported.',
+          'Agents get automatic reminders for unsigned agreements, unanswered meeting requests and unpaid referral fees, and can pay online.',
+          'Agents can refer their own clients to agents in other markets, with the hold timer and reminders running on their own.',
+          'Public pages rank agents by state, city, neighbourhood and zip code.',
+        ],
+      },
+      {
+        t: 'How we run it',
+        d: '56 scheduled jobs keep it running: releasing leads every two minutes, refreshing rankings, watching sales and sending reminders.',
+        points: [
+          'Anything doubtful, like a possible duplicate or no qualified local agent, is set aside for a person to review.',
+          'An emergency off switch, a practice mode that releases nothing, and a cap on releases per run.',
+          'A lead can never be released twice, or to an agent who hasn’t signed the referral agreement.',
+          'No collections letter goes out without a person approving it.',
+          'If a data feed stalls, the owner gets a text the same day. That check exists because one feed once died unnoticed for eight weeks.',
+          'Problems reported in the app reach the team straight away, with a screenshot.',
+        ],
+      },
     ],
   },
   {
