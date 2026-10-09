@@ -47,9 +47,9 @@ export const work: Project[] = [
       },
       {
         t: 'Since March',
-        d: 'More than 2,000 changes in seven months, against about 3,000 in the three years before.',
+        d: 'More than 2,000 changes in seven months, against about 3,000 in the nearly three years before.',
         points: [
-          'March: error reporting and real speed-to-release figures on the dashboard.',
+          'March: in-app error reporting and new dashboard metrics.',
           'March to April: the new matching ran in shadow beside the team.',
           'May: referral fees paid online.',
           'July: 16 scheduled jobs moved off an ageing server onto the new platform.',
