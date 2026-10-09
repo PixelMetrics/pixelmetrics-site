@@ -61,11 +61,18 @@ const zoom = [
 
     {p.images?.length ? (
       <div class="shots">
-        {p.images.map((im, i) => (
-          <figure class:list={['shot-frame', { lead: i === 0 }]} data-resolve>
-            <Image src={im.src} alt={im.alt} widths={[640, 1000, 1400, 2000]} sizes={i === 0 ? '(max-width: 1320px) 100vw, 1208px' : '(max-width: 760px) 100vw, 50vw'} />
-          </figure>
-        ))}
+        <figure class="shot-frame" data-resolve>
+          <Image src={p.images[0].src} alt={p.images[0].alt} widths={[640, 1000, 1400, 2000]} sizes="(max-width: 1320px) 100vw, 1208px" />
+        </figure>
+        {p.images.length > 1 && (
+          <div class:list={['gallery', { 'with-phone': p.images.some((im) => im.phone) }]}>
+            {p.images.slice(1).map((im) => (
+              <figure class:list={['shot-frame', { phone: im.phone }]} data-resolve>
+                <Image src={im.src} alt={im.alt} widths={im.phone ? [400, 800] : [640, 1000, 1400]} sizes={im.phone ? '(max-width: 760px) 80vw, 400px' : '(max-width: 760px) 100vw, 800px'} />
+              </figure>
+            ))}
+          </div>
+        )}
       </div>
     ) : (
       <div class="image" data-resolve>
@@ -127,9 +134,16 @@ const zoom = [
   .image { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--line); background: var(--ink); margin-bottom: 72px; overflow: hidden; }
   .slot { position: absolute; left: 18px; bottom: 16px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding: 2px 4px; }
 
-  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 72px; }
+  .shots { display: grid; gap: 16px; margin-bottom: 72px; }
   .shot-frame { margin: 0; border: 1px solid var(--line); background: var(--ink); overflow: hidden; }
-  .shot-frame.lead { grid-column: 1 / -1; }
+  .gallery { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .gallery.with-phone { grid-template-columns: 2fr 1fr; }
+  .gallery.with-phone .phone { grid-column: 2; grid-row: 1 / span 2; }
+  .gallery.with-phone .phone img { height: 100%; object-fit: cover; object-position: top; }
+  @media (max-width: 760px) {
+    .gallery.with-phone { grid-template-columns: 1fr; }
+    .gallery.with-phone .phone { grid-column: auto; grid-row: auto; max-width: 360px; justify-self: center; }
+  }
   .shot-frame img { display: block; width: 100%; height: auto; }
   .chapter { font-size: clamp(22px, 2.2vw, 30px); max-width: 34ch; }
   .points {

@@ -4,7 +4,12 @@
 
 import type { ImageMetadata } from 'astro';
 import bopHome from '../assets/work/bird-of-paradise-homepage.webp';
+import bopPackages from '../assets/work/bird-of-paradise-packages.webp';
+import bopSurf from '../assets/work/bird-of-paradise-surf.webp';
+import bopPhoneEs from '../assets/work/bird-of-paradise-phone-es.webp';
 import eaIntake from '../assets/work/effectiveagents-intake.webp';
+import popoloLanding from '../assets/work/popolo-landing.webp';
+import popoloTable from '../assets/work/popolo-demo-table.webp';
 
 export type Val = string | { todo: string };
 export const todo = (text: string): Val => ({ todo: text });
@@ -23,7 +28,7 @@ export interface Project {
   /** The one pixel the project changed, e.g. "Missed calls: 0" */
   pixel: { label: Val; value: Val };
   /** Screenshots; the first is the card and case-study lead image */
-  images?: { src: ImageMetadata; alt: string }[];
+  images?: { src: ImageMetadata; alt: string; phone?: boolean }[];
   /** Where the zoom lands, 0..1 */
   focus: { x: number; y: number };
   chapters: { t: string; d: Val; points?: Val[] }[];
@@ -101,6 +106,10 @@ export const work: Project[] = [
     result: 'Recipes without a source: 0',
     pixel: { label: 'Recipes that forget who they came from', value: '0' },
     focus: { x: 0.22, y: 0.7 },
+    images: [
+      { src: popoloLanding, alt: 'Popolo landing page: “The cookbook you’ll still be adding to in ten years”, beside a recipe for Nonna’s ragù.' },
+      { src: popoloTable, alt: 'A sample family Table, “The Popolos”, with each recipe showing who it came from and how often it has been cooked.' },
+    ],
     chapters: [
       {
         t: 'The business',
@@ -155,7 +164,12 @@ export const work: Project[] = [
     result: 'Bookings retyped by hand: 0',
     pixel: { label: 'Bookings retyped by hand', value: '0' },
     focus: { x: 0.68, y: 0.24 },
-    images: [{ src: bopHome, alt: 'Bird of Paradise Hotel homepage: “Two minutes from Jacó Beach, breakfast included”, with the date picker and Check availability button.' }],
+    images: [
+      { src: bopHome, alt: 'Bird of Paradise Hotel homepage: “Two minutes from Jacó Beach, breakfast included”, with the date picker and Check availability button.' },
+      { src: bopPackages, alt: 'Packages page: “Everything in one booking”, with prices live from the hotel’s booking system.' },
+      { src: bopSurf, alt: 'Surf Weekend and Surf Week package cards with nights, guests and lessons.' },
+      { src: bopPhoneEs, alt: 'The homepage on a phone in Spanish: “A dos minutos de la playa de Jacó, con desayuno incluido.”', phone: true },
+    ],
     chapters: [
       {
         t: 'The business',
