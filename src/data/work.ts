@@ -1,7 +1,7 @@
 // Case studies. Anything wrapped in todo() is placeholder copy and renders
 // with a dashed outline on the site until it is replaced with real content.
-// Facts taken from the current site: EffectiveAgents is ours and the largest,
-// Popolo is launching, Bird of Paradise Hotel is a client build.
+// Popolo and Bird of Paradise come from write-ups of their repositories
+// (October 2026). EffectiveAgents is still placeholder.
 
 export type Val = string | { todo: string };
 export const todo = (text: string): Val => ({ todo: text });
@@ -21,7 +21,7 @@ export interface Project {
   pixel: { label: Val; value: Val };
   /** Where the zoom lands, 0..1 */
   focus: { x: number; y: number };
-  chapters: { t: string; d: Val }[];
+  chapters: { t: string; d: Val; points?: Val[] }[];
 }
 
 export const work: Project[] = [
@@ -49,36 +49,87 @@ export const work: Project[] = [
     client: 'Popolo',
     relation: 'We operate · launching',
     url: 'https://getpopolo.com',
-    headline: todo('A new product, built and run by the people who will live with it.'),
-    lede: todo('Describe Popolo in two sentences: what it is, who it is for, and where it is in its launch.'),
-    built: todo('Software · Website'),
+    headline: 'A family cookbook that catches recipes before they get lost in the group chat.',
+    lede: 'Popolo is a personal cookbook for keeping family recipes for good, shared in groups it calls tables. We built its iPhone app, designed to get a recipe from a chat, a video or a handwritten card into the cookbook in under a minute.',
+    built: 'Software',
     runningSince: todo('Launching 2026'),
-    result: todo('Signups: open'),
-    pixel: { label: todo('Days to launch'), value: todo('0') },
+    result: todo('Recipes rescued: count'),
+    pixel: { label: 'Recipes rescued from chats, screenshots and cards', value: todo('000') },
     focus: { x: 0.22, y: 0.7 },
     chapters: [
-      { t: 'The business', d: todo('The product and the market it is entering.') },
-      { t: 'The drain', d: todo('The problem Popolo removes for its customers.') },
-      { t: 'What we built', d: todo('The product, the site and the systems behind them.') },
-      { t: 'How we run it', d: todo('Who operates it day to day, and what we measure.') },
+      {
+        t: 'The business',
+        d: 'A personal cookbook for families who want their recipes kept for good. Families share them in groups called tables, on the web and now on the iPhone.',
+      },
+      {
+        t: 'The drain',
+        d: 'Family recipes live in awkward places: a link in a group chat, a video caption, a screenshot, a card in a drawer, or only in one person’s head. Getting one into a cookbook meant typing it out by hand.',
+      },
+      {
+        t: 'What we built',
+        d: 'An iPhone app that turns any of those into a draft recipe in a couple of taps. Most of it was built in its first five days.',
+        points: [
+          'Share a web page, video or screenshot to Popolo straight from the phone’s share menu.',
+          'Photograph a handwritten card. The app reads it and keeps the original photo with the recipe for good.',
+          'One review screen flags anything missing and puts the recipe on a family table.',
+          'Cooking mode keeps the screen awake, shows one step at a time and lets you peek at the ingredients.',
+          'A one-line note after cooking goes into the table’s record of that recipe.',
+          'Video captions are read, and followed to the full recipe when they link to one.',
+        ],
+      },
+      {
+        t: 'How we run it',
+        d: 'Recipe reading runs on a hosted backend. When something can’t load, the app says so plainly and offers to try again.',
+        points: [
+          'No streaks, reminders or digests, by design.',
+          todo('Backend monitoring and alerts: confirm what exists and who is told.'),
+        ],
+      },
     ],
   },
   {
     slug: 'bird-of-paradise',
     client: 'Bird of Paradise Hotel',
     relation: 'Client build',
-    headline: todo('A hotel website rebuilt to turn lookers into bookings.'),
-    lede: todo('Describe the hotel and what its old site was costing it.'),
-    built: todo('Website · Automation'),
-    runningSince: todo('2025'),
-    result: todo('Direct bookings: up'),
-    pixel: { label: todo('Booking enquiries answered'), value: todo('100%') },
+    url: 'https://birdofparadisehotel.com',
+    headline: 'A family hotel that now takes, charges and confirms its own bookings.',
+    lede: 'Bird of Paradise is a family-run boutique hotel in Jacó, Costa Rica, for surfers, travellers, groups and retreats, in English and Spanish. Its old website sent every guest to someone else’s booking page.',
+    built: 'Software · Website · Automation',
+    runningSince: 'September 2026',
+    result: 'Bookings retyped by hand: 0',
+    pixel: { label: 'Bookings retyped by hand', value: '0' },
     focus: { x: 0.68, y: 0.24 },
     chapters: [
-      { t: 'The business', d: todo('The hotel, its guests and how they found it.') },
-      { t: 'The drain', d: todo('Where bookings were leaking: slow pages, unanswered enquiries, third-party fees.') },
-      { t: 'What we built', d: todo('The new site and whatever runs behind it.') },
-      { t: 'How we run it', d: todo('Hosting, updates and who the hotel calls when something changes.') },
+      {
+        t: 'The business',
+        d: 'A family-run boutique hotel in Jacó, Costa Rica. Its guests are surfers, travellers, groups and retreat organisers, booking in English and Spanish.',
+      },
+      {
+        t: 'The drain',
+        d: 'The old site handed every booking to a third-party page, so the hotel never held the guest, the payment or the enquiry. Prices were kept up to date by hand, and paid bookings were typed into the reservation system a second time.',
+      },
+      {
+        t: 'What we built',
+        d: 'A direct-booking engine on the hotel’s own site, wired into its reservation system. From first commit to taking real bookings in 15 days.',
+        points: [
+          'Live prices and availability for the exact dates, in English and Spanish.',
+          'A card deposit at booking. The reservation is created automatically and the guest and the hotel both get a confirmation.',
+          'The balance charges itself on the day free cancellation ends. If that fails, the guest gets a pay link.',
+          'Guests change or cancel on their own, and refunds settle across both payments.',
+          'Surf, golf and adventure packages, a trip planner with shareable plans, and tours offered after booking.',
+          'A groups and retreats page, a travel guide for search, and every old web address redirected.',
+        ],
+      },
+      {
+        t: 'How we run it',
+        d: 'Twice a day the system checks every payment. It finishes bookings left half done, releases checkouts nobody paid for and charges balances that are due.',
+        points: [
+          'If the last room sells mid-payment, the guest is refunded in full and the hotel gets one urgent email.',
+          'A repeated payment notice can never double-book or double-charge.',
+          'Anything it can’t settle on its own is flagged once to the reservations inbox.',
+          'A bookings report by source arrives on the 1st of every month.',
+        ],
+      },
     ],
   },
 ];

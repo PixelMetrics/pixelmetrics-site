@@ -66,6 +66,11 @@ const zoom = [
     {p.chapters.map((c, i) => (
       <Section n={String(i + 1).padStart(2, '0')} title={c.t}>
         <p class="voice chapter"><V v={c.d} /></p>
+        {c.points && (
+          <ul class="points">
+            {c.points.map((pt) => <li><V v={pt} /></li>)}
+          </ul>
+        )}
       </Section>
     ))}
 
@@ -112,6 +117,11 @@ const zoom = [
   .slot { position: absolute; left: 18px; bottom: 16px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding: 2px 4px; }
 
   .chapter { font-size: clamp(22px, 2.2vw, 30px); max-width: 34ch; }
+  .points {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px 40px;
+  }
+  .points li { border-top: 1px solid var(--line-quiet); padding-top: 12px; font-size: 15px; line-height: 1.55; color: var(--muted); text-wrap: pretty; }
 
   .next { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line-strong); padding: 28px 0 0; }
   .next-client { font-family: var(--serif); font-size: clamp(40px, 6vw, 88px); font-weight: 300; letter-spacing: -.04em; line-height: 1; }
