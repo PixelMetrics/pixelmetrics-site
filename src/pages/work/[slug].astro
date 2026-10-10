@@ -1,7 +1,6 @@
 ---
 // Case study: the project, the one number it changed and the work, on the first screen.
 import Base from '../../layouts/Base.astro';
-import Section from '../../components/Section.astro';
 import Shot from '../../components/Shot.astro';
 import V from '../../components/V.astro';
 import Cta from '../../components/Cta.astro';
@@ -40,11 +39,18 @@ const [lead, ...rest] = p.images ?? [];
     <dl class="facts">
       <div><dt>Client</dt><dd>{p.client}</dd></div>
       <div><dt>Built</dt><dd><V v={p.built} /></dd></div>
-      <div><dt>Running since</dt><dd class="metric"><V v={p.runningSince} /></dd></div>
+      <div><dt>Live since</dt><dd class="metric"><V v={p.runningSince} /></dd></div>
       <div><dt>Result</dt><dd><V v={p.result} /></dd></div>
     </dl>
 
-    <p class="body lede"><V v={p.lede} /></p>
+    <section class="ba" aria-label="Before and after">
+      <div class="ba-cell"><span class="eyebrow">Before</span><p>{p.before}</p></div>
+      <div class="ba-cell after"><span class="eyebrow">After</span><p>{p.after}</p></div>
+    </section>
+
+    <ul class="results" aria-label="Results">
+      {p.results.map((r) => <li>{r}</li>)}
+    </ul>
 
     {p.quote && <div class="quote-wrap"><Quote {...p.quote} /></div>}
 
@@ -63,16 +69,6 @@ const [lead, ...rest] = p.images ?? [];
       </div>
     )}
 
-    {p.chapters.map((c, i) => (
-      <Section n={String(i + 1).padStart(2, '0')} title={c.t}>
-        <p class="voice chapter"><V v={c.d} /></p>
-        {c.points && (
-          <ul class="points">
-            {c.points.map((pt) => <li><V v={pt} /></li>)}
-          </ul>
-        )}
-      </Section>
-    ))}
 
     <a href={`/work/${next.slug}/`} class="next">
       <span class="eyebrow">Next project</span>
@@ -116,7 +112,15 @@ const [lead, ...rest] = p.images ?? [];
     .facts > div:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
   }
 
-  .lede { max-width: 62ch; margin: 40px 0; font-size: 17px; }
+  .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 40px 0 24px; }
+  .ba-cell { border: 1px solid var(--line); background: var(--ink); padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .ba-cell p { font-family: var(--serif); font-weight: 300; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.25; letter-spacing: -.01em; color: var(--soft); text-wrap: pretty; }
+  .ba-cell.after { border-color: rgba(200, 238, 74, .45); }
+  .ba-cell.after .eyebrow { color: var(--lime); }
+  .ba-cell.after p { color: var(--bone); }
+  .results { list-style: none; margin: 0 0 48px; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 24px; }
+  .results li { border-top: 1px solid var(--line-strong); padding-top: 12px; font-size: 16px; line-height: 1.45; }
+  @media (max-width: 760px) { .ba { grid-template-columns: 1fr; } }
   .quote-wrap { margin: 0 0 56px; }
 
   .gallery { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 72px; }
@@ -127,13 +131,6 @@ const [lead, ...rest] = p.images ?? [];
     .gallery.with-phone { grid-template-columns: 1fr; }
     .gallery.with-phone :global(.phone) { grid-column: auto; grid-row: auto; width: 100%; max-width: 360px; aspect-ratio: 923 / 2000; justify-self: center; }
   }
-
-  .chapter { font-size: clamp(22px, 2.2vw, 30px); max-width: 34ch; }
-  .points {
-    list-style: none; margin: 0; padding: 0;
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px 40px;
-  }
-  .points li { border-top: 1px solid var(--line-quiet); padding-top: 12px; font-size: 15px; line-height: 1.55; color: var(--muted); text-wrap: pretty; }
 
   .next { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line-strong); padding: 28px 0 0; }
   .next-client { font-family: var(--serif); font-size: clamp(40px, 6vw, 88px); font-weight: 300; letter-spacing: -.04em; line-height: 1; }

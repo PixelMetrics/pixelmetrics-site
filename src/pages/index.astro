@@ -1,28 +1,27 @@
 ---
 import Base from '../layouts/Base.astro';
 import Section from '../components/Section.astro';
-import ServicesStrip from '../components/ServicesStrip.astro';
 import Shot from '../components/Shot.astro';
 import WorkCard from '../components/WorkCard.astro';
 import Cta from '../components/Cta.astro';
 import Quote from '../components/Quote.astro';
-import { BOOK_URL, method, proof, industries, team } from '../data/site';
 import V from '../components/V.astro';
+import { BOOK_URL, offers, afterBooking, reasons, faqs, proof, industries, team } from '../data/site';
 import { work } from '../data/work';
 const featured = work.find((p) => p.slug === 'bird-of-paradise')!;
 const quoted = work.find((p) => p.quote);
 ---
 <Base>
-  <!-- Hero: the statement and the proof share the first screen. -->
+  <!-- Hero: a plain promise, with the work and the results on the same screen. -->
   <div class="wrap-wide hero-wrap">
     <section class="hero" aria-labelledby="hero-h">
       <div class="hero-copy">
-        <span class="eyebrow">Software · Websites · Automation</span>
-        <h1 id="hero-h" class="display">We build the systems your business <em>runs on.</em></h1>
-        <p class="body">Custom software, websites and automation, built and run by a team that operates its own companies. One team, accountable end to end.</p>
+        <span class="eyebrow">Websites · Software · Automation</span>
+        <h1 id="hero-h" class="display">Websites and software that bring in customers and <em>save your team hours.</em></h1>
+        <p class="body">Designed, built in weeks and looked after by a small team in St. Petersburg, Florida.</p>
         <div class="actions">
-          <a class="btn btn--solid" href={BOOK_URL}>Book a 30-min scoping call</a>
-          <a class="btn" href="/work/">See what we build</a>
+          <a class="btn btn--solid" href={BOOK_URL}>Book a 30-min call</a>
+          <a class="btn" href="/work/">See our work</a>
         </div>
       </div>
       <a class="hero-work" href={`/work/${featured.slug}/`}>
@@ -42,24 +41,32 @@ const quoted = work.find((p) => p.quote);
   </div>
 
   <div class="wrap">
-    <Section id="services" n="01" title="What we build" note="Five capabilities, one team. Attention resolves one cell and lights it; the rest compress. Hover across it.">
-      <ServicesStrip />
+    <Section id="services" n="01" title="What we build" note="Three things, often together in one project.">
+      <ul class="offers">
+        {offers.map((o) => (
+          <li>
+            <h3>{o.t}</h3>
+            <p>{o.d}</p>
+            <a href={`/work/${o.example.slug}/`}>See {o.example.label} →</a>
+          </li>
+        ))}
+      </ul>
       <p class="who"><span class="eyebrow">Who we help</span> {industries.join(' · ')}</p>
     </Section>
 
-    <Section id="method" n="02" title="An engineer inside your business" note="No handoffs, no black box. One engineer learns how your business runs, stays through the build and comes back for the launch.">
-      <ol class="method">
-        {method.map((m) => (
+    <Section id="method" n="02" title="What happens after you book">
+      <ol class="steps">
+        {afterBooking.map((s) => (
           <li>
-            <span class="step"><span class="sec-num">{m.n}</span> {m.step}</span>
-            <h3>{m.t}</h3>
-            <p>{m.d}</p>
+            <span class="when"><V v={s.when} /></span>
+            <h3>{s.t}</h3>
+            <p>{s.d}</p>
           </li>
         ))}
       </ol>
     </Section>
 
-    <Section id="work" n="03" title="Proof that’s still running" note="Work is listed by running since, not by launch date. The brand is only as good as what’s live.">
+    <Section id="work" n="03" title="Recent work" note="What we built, and what changed.">
       <div class="work-grid">
         {work.map((p) => <WorkCard p={p} />)}
       </div>
@@ -67,24 +74,15 @@ const quoted = work.find((p) => p.quote);
       <a href="/work/" class="more">All work →</a>
     </Section>
 
-    <Section n="04" title="Why us" note="We are operators first. Everything we sell, we already run in our own companies.">
-      <div class="why">
-        <div class="why-statement">
-          <span class="cell-tag">1/2 · statement</span>
-          <p class="display">We are not consultants. <em>We run this in our own companies first.</em></p>
-        </div>
-        <figure class="why-quote">
-          <span class="cell-tag">1/4 · proof</span>
-          <blockquote class="voice">“If it breaks, we feel it before you do.”</blockquote>
-          <figcaption class="eyebrow">The founders, PixelMetrics</figcaption>
-        </figure>
-        <div class="why-cells">
-          <div><strong>Custom software, not plugins</strong><span>Apps · Tools · Integrations</span></div>
-          <div><strong>Websites built to sell</strong><span>Design · Build · Launch</span></div>
-          <div><strong>Automation that holds up</strong><span>Agents · Workflows · Dashboards</span></div>
-          <div><strong>Process before automation</strong><span>Audit · Fix · Run</span></div>
-        </div>
-      </div>
+    <Section n="04" title="Why us">
+      <ul class="reasons">
+        {reasons.map((r) => (
+          <li>
+            <h3>{r.t}</h3>
+            <p>{r.d}</p>
+          </li>
+        ))}
+      </ul>
     </Section>
 
     <Section id="about" n="05" title="Small team. Serious software." note="The people you talk to on the first call are the people who build it.">
@@ -98,6 +96,17 @@ const quoted = work.find((p) => p.quote);
           </li>
         ))}
       </ul>
+    </Section>
+
+    <Section id="questions" n="06" title="Questions">
+      <div class="faqs">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p><V v={f.a} /></p>
+          </details>
+        ))}
+      </div>
     </Section>
   </div>
 
@@ -117,7 +126,7 @@ const quoted = work.find((p) => p.quote);
     display: flex; flex-direction: column; justify-content: center; gap: 24px;
     border-right: 1px solid var(--line);
   }
-  .hero h1 { font-size: clamp(48px, 5.6vw, 88px); }
+  .hero h1 { font-size: clamp(40px, 4.6vw, 72px); line-height: .96; }
   .hero-copy .body { font-size: 17px; max-width: 44ch; }
   .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
   .hero-work { display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: clamp(16px, 2.4vw, 32px); color: var(--bone); }
@@ -137,14 +146,20 @@ const quoted = work.find((p) => p.quote);
     .proof li + li { border-left: 0; border-top: 1px solid var(--line); }
   }
 
-  /* Method */
-  .method { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px 16px; }
-  .method li { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--line-quiet); padding-top: 14px; }
-  .step { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--graphite); }
-  .step .sec-num { margin-right: 6px; }
+  /* Shared three-up lists: offers, steps, reasons */
+  .offers, .steps, .reasons { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px 24px; }
+  .offers li, .steps li, .reasons li { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--line-strong); padding-top: 16px; align-items: flex-start; }
+  .offers h3, .steps h3, .reasons h3 { font-family: var(--serif); font-size: clamp(24px, 2.2vw, 30px); font-weight: 300; letter-spacing: -.02em; line-height: 1.05; }
+  .offers p, .steps p, .reasons p { font-size: 15px; line-height: 1.55; color: var(--muted); text-wrap: pretty; max-width: 40ch; }
+  .offers a { font-size: 14px; margin-top: 4px; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; }
+  .when { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--lime); }
 
   .who { font-size: 14px; line-height: 1.6; color: var(--muted); }
   .who .eyebrow { margin-right: 10px; }
+
+  /* Work */
+  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+  .more { font-size: 14px; align-self: flex-start; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; }
 
   /* Team */
   .team { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px 16px; }
@@ -153,39 +168,16 @@ const quoted = work.find((p) => p.quote);
   .name { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: -.02em; line-height: 1.05; }
   .role { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--graphite); }
   .team p { font-size: 14px; line-height: 1.55; color: var(--muted); text-wrap: pretty; }
-  .method h3 { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: -.02em; line-height: 1.05; }
-  .method p { font-size: 14px; line-height: 1.55; color: var(--muted); text-wrap: pretty; }
 
-  /* Work */
-  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
-  .more { font-size: 14px; align-self: flex-start; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; }
-
-  /* Why: a recursive halving of the block */
-  .why {
-    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto;
-    border: 1px solid var(--line); background: var(--ink);
-  }
-  .cell-tag { font-size: 10px; color: var(--faint); }
-  .why-statement {
-    grid-row: 1 / 3; border-right: 1px solid var(--line); padding: 18px;
-    display: flex; flex-direction: column; justify-content: space-between; gap: 64px;
-  }
-  .why-statement .display { font-size: clamp(36px, 4.6vw, 64px); line-height: .98; letter-spacing: -.04em; }
-  .why-quote {
-    margin: 0; padding: 18px; border-bottom: 1px solid var(--line);
-    display: flex; flex-direction: column; gap: 20px; min-height: 220px;
-  }
-  .why-quote blockquote { margin: auto 0 0; font-size: clamp(22px, 2.2vw, 30px); }
-  .why-cells { display: grid; grid-template-columns: 1fr 1fr; }
-  .why-cells > div { padding: 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 120px; }
-  .why-cells > :nth-child(odd) { border-right: 1px solid var(--line); }
-  .why-cells > :nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
-  .why-cells strong { font-family: var(--serif); font-weight: 300; font-size: 20px; letter-spacing: -.01em; line-height: 1.1; }
-  .why-cells span { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
-  @media (max-width: 760px) {
-    .why { grid-template-columns: 1fr; }
-    .why-statement { grid-row: auto; border-right: 0; border-bottom: 1px solid var(--line); }
-  }
+  /* Questions */
+  .faqs { display: flex; flex-direction: column; border-top: 1px solid var(--line-strong); }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; font-family: var(--serif); font-size: clamp(20px, 1.8vw, 24px); font-weight: 300; letter-spacing: -.01em; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-family: var(--sans); color: var(--graphite); }
+  details[open] summary::after { content: '−'; }
+  summary:hover { color: var(--lime); }
+  details p { padding: 0 0 18px; font-size: 15px; line-height: 1.6; color: var(--muted); max-width: 62ch; }
 
   .cta-wrap { padding-top: 16px; padding-bottom: 96px; }
 </style>

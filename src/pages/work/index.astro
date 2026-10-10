@@ -5,14 +5,14 @@ import V from '../../components/V.astro';
 import Cta from '../../components/Cta.astro';
 import { work, moreWork } from '../../data/work';
 ---
-<Base title="Work · PixelMetrics" description="Software, websites and automation we built and still run. Listed by running since, not by launch date.">
+<Base title="Work · PixelMetrics" description="Websites and software we have built for clients and for our own businesses, and what changed.">
   <div class="wrap">
     <header class="intro">
       <div class="lead">
-        <span class="eyebrow">Work · Listed by running since</span>
-        <h1 class="display">Still <em>running</em><span class="stop" aria-hidden="true"></span></h1>
+        <span class="eyebrow">Work</span>
+        <h1 class="display">Our <em>work</em><span class="stop" aria-hidden="true"></span></h1>
       </div>
-      <p class="body">Each project shows the business, the work and the one number it changed. We list it by how long it has been live, because the brand is only as good as what’s still running.</p>
+      <p class="body">Websites and software we’ve built, and what changed.</p>
     </header>
 
     <ol class="list">
@@ -30,7 +30,7 @@ import { work, moreWork } from '../../data/work';
             </span>
             <dl class="facts">
               <div><dt>Built</dt><dd><V v={p.built} /></dd></div>
-              <div><dt>Running since</dt><dd class="metric"><V v={p.runningSince} /></dd></div>
+              <div><dt>Live since</dt><dd class="metric"><V v={p.runningSince} /></dd></div>
               <div><dt>Result</dt><dd><V v={p.result} /></dd></div>
             </dl>
           </a>

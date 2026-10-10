@@ -4,20 +4,34 @@ export const EMAIL = 'hello@pixelmetrics.dev';
 export const LOCATION = 'PixelMetrics, LLC · St. Petersburg, Florida';
 export const BOOK_URL = `mailto:${EMAIL}?subject=${encodeURIComponent('30-min scoping call')}`;
 
-export const services = [
-  { n: '01', t: 'Software', tags: 'Apps · Tools · Integrations', d: 'Custom apps and internal tools built around how your business actually runs. Not a plugin. Built for you, owned by you.' },
-  { n: '02', t: 'Websites', tags: 'Design · Build · Launch', d: 'Sites that load fast, rank well and turn visitors into calls. Designed and built in-house, no templates.' },
-  { n: '03', t: 'Automation', tags: 'Agents · Workflows · Dashboards', d: 'The follow-up, intake, quoting and paperwork that runs itself. If a person has to do it twice, the software does it.' },
-  { n: '04', t: 'Stack upgrades', tags: 'Migrate · Modernize', d: 'We find what is slow, manual or held together with duct tape, and replace it while you keep working.' },
-  { n: '05', t: 'Process', tags: 'Audit · Fix · Run', d: 'Before we automate anything, we fix the steps that waste your hours. Fewer steps, then no human needed for the rest.' },
+// What we build: three plain offers, each tied to a case study.
+export const offers = [
+  { t: 'A website that brings in work', d: 'Fast, bilingual if you need it, with booking or quotes built in.', example: { label: 'Bird of Paradise Hotel', slug: 'bird-of-paradise' } },
+  { t: 'Admin that runs itself', d: 'Follow-ups, reminders, payments and paperwork, done by software instead of by hand.', example: { label: 'EffectiveAgents', slug: 'effectiveagents' } },
+  { t: 'Your own software', d: 'The tool your business needs that no off-the-shelf app sells.', example: { label: 'Popolo', slug: 'popolo' } },
 ];
 
-// "An engineer inside your business": one engineer stays with you from audit to launch.
-export const method = [
-  { n: '01', step: 'Audit · on site', t: 'We sit inside your business', d: 'An engineer works alongside your team and follows how bookings, orders and money actually move. You get a written scope and a fixed quote.' },
-  { n: '02', step: 'Build', t: 'Two-week stretches', d: 'Each piece is tested on a private preview you can click through before anything goes live.' },
-  { n: '03', step: 'Launch · on site', t: 'The same engineer comes back', d: 'They launch it with you, train your team and make sure nothing is missed.' },
-  { n: '04', step: 'Run', t: 'Support by the hour', d: 'Monitoring that wakes someone up when something breaks, and a plain-English guide for your team.' },
+// What happens after you book.
+export const afterBooking: { when: Val; t: string; d: string }[] = [
+  { when: 'The call', t: '30 minutes', d: 'You tell us what’s slow, manual or broken. No tech questions, no homework.' },
+  { when: todo('2 days later'), t: 'A one-page plan', d: 'What we’d build, how long it takes and the price.' },
+  { when: 'You decide', t: 'No retainer', d: 'If it’s a yes, one engineer works on site with you, builds it and comes back for the launch.' },
+];
+
+// Why us: three facts.
+export const reasons = [
+  { t: 'We run it ourselves', d: 'EffectiveAgents and Popolo, two of our own businesses, run on software we built.' },
+  { t: 'One engineer, start to finish', d: 'The person who learns your business is the person who builds it. No handoffs.' },
+  { t: 'Local', d: 'Based in St. Petersburg, Florida. For the audit and the launch, we come to you.' },
+];
+
+// Questions buyers ask. Answers wrapped in todo() need your real numbers.
+export const faqs: { q: string; a: Val }[] = [
+  { q: 'What does a project cost?', a: todo('Most projects are $X to $Y. You get a fixed price in writing before any work starts.') },
+  { q: 'How long does it take?', a: todo('Most websites take X to Y weeks. Bird of Paradise went from first line of code to live bookings in 15 days.') },
+  { q: 'Do we own the website and code?', a: todo('Yes. The code, the domain and every account are in your name.') },
+  { q: 'What if something breaks?', a: 'Our monitoring alerts us, usually before you notice. After launch, support is by the hour, so you only pay for what you use.' },
+  { q: 'Do I need to be technical?', a: 'No. You tell us how your week works. We handle the rest and explain it in plain English.' },
 ];
 
 export const industries = ['Boutique hotels', 'Contractors and builders', 'Shops', 'Salons', 'Restaurants', 'Real estate', 'Marketplaces'];

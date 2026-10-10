@@ -15,8 +15,8 @@ npx astro check   # type check
 | Route | File |
 | --- | --- |
 | `/` | `src/pages/index.astro` · hero, services, method, proof, why us, call to action |
-| `/work/` | `src/pages/work/index.astro` · work listed by "running since" |
-| `/work/<slug>/` | `src/pages/work/[slug].astro` · case study as a zoom to the one pixel it changed |
+| `/work/` | `src/pages/work/index.astro` · case studies plus more client work |
+| `/work/<slug>/` | `src/pages/work/[slug].astro` · case study: result, screenshots, before and after |
 
 ## Brand system in code
 
