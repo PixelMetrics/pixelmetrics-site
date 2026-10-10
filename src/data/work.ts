@@ -27,6 +27,8 @@ export interface Project {
   result: Val;
   /** The one pixel the project changed, e.g. "Missed calls: 0" */
   pixel: { label: Val; value: Val };
+  /** A client's own words. Never write one for them. */
+  quote?: { text: string; by: string; role: string };
   /** Screenshots; the first is the card and case-study lead image */
   images?: { src: ImageMetadata; alt: string; phone?: boolean }[];
   chapters: { t: string; d: Val; points?: Val[] }[];
@@ -158,6 +160,11 @@ export const work: Project[] = [
     built: 'Software · Website · Automation',
     runningSince: 'September 2026',
     result: 'Bookings retyped by hand: 0',
+    quote: {
+      text: 'In fifteen days we had a website that feels like our hotel and lets guests book direct in English or Spanish, and the changes we ask for get done fast.',
+      by: 'Tina and Carlos',
+      role: 'Owners, Bird of Paradise Hotel, Jacó, Costa Rica',
+    },
     pixel: { label: 'Bookings retyped by hand', value: '0' },
     images: [
       { src: bopHome, alt: 'Bird of Paradise Hotel homepage: “Two minutes from Jacó Beach, breakfast included”, with the date picker and Check availability button.' },

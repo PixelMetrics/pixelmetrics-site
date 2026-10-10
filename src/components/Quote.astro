@@ -1,0 +1,23 @@
+---
+// A client quote, set in the founders' voice face. Only ever the client's own words.
+interface Props { text: string; by: string; role: string; href?: string }
+const { text, by, role, href } = Astro.props;
+---
+<figure class="quote">
+  <blockquote class="voice">“{text}”</blockquote>
+  <figcaption>
+    <span class="by">{by}</span>
+    <span class="role">{role}</span>
+    {href && <a href={href} class="more">Read the case study →</a>}
+  </figcaption>
+</figure>
+
+<style>
+  .quote { margin: 0; border-top: 1px solid var(--line-strong); padding: 28px 0 8px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: 24px 40px; align-items: end; }
+  blockquote { margin: 0; font-size: clamp(26px, 3vw, 42px); line-height: 1.15; letter-spacing: -.02em; color: var(--bone); text-wrap: balance; }
+  figcaption { display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 1.4; }
+  .by { font-weight: 600; }
+  .role { color: var(--graphite); }
+  .more { margin-top: 12px; align-self: flex-start; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; }
+  @media (max-width: 760px) { .quote { grid-template-columns: 1fr; } }
+</style>
