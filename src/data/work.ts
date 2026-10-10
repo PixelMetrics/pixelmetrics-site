@@ -206,3 +206,21 @@ export const work: Project[] = [
     ],
   },
 ];
+
+// Smaller client builds, listed on the Work page without a full case study.
+export const moreWork: { client: string; place: string; kind: string; d: Val; url: Val }[] = [
+  {
+    client: 'Custom Coastal Construction',
+    place: 'St. Petersburg, FL',
+    kind: 'Custom homes',
+    d: 'A custom home builder’s site with a project gallery, their three-phase process and an enquiry form that takes plans and inspiration files.',
+    url: todo('Link'),
+  },
+  {
+    client: 'Mojo Demolition & Excavation',
+    place: 'Tampa Bay, FL',
+    kind: 'Site work',
+    d: 'Demolition, excavation and site work across four counties, with a page for each service, a gallery and a free-quote form with photo upload.',
+    url: todo('Link'),
+  },
+];

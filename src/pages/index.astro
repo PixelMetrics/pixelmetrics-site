@@ -6,7 +6,8 @@ import Shot from '../components/Shot.astro';
 import WorkCard from '../components/WorkCard.astro';
 import Cta from '../components/Cta.astro';
 import Quote from '../components/Quote.astro';
-import { BOOK_URL, method, proof } from '../data/site';
+import { BOOK_URL, method, proof, industries, team } from '../data/site';
+import V from '../components/V.astro';
 import { work } from '../data/work';
 const featured = work.find((p) => p.slug === 'bird-of-paradise')!;
 const quoted = work.find((p) => p.quote);
@@ -43,13 +44,14 @@ const quoted = work.find((p) => p.quote);
   <div class="wrap">
     <Section id="services" n="01" title="What we build" note="Five capabilities, one team. Attention resolves one cell and lights it; the rest compress. Hover across it.">
       <ServicesStrip />
+      <p class="who"><span class="eyebrow">Who we help</span> {industries.join(' · ')}</p>
     </Section>
 
-    <Section id="method" n="02" title="How it works" note="Four steps, nothing for you to learn. We find the one step that wastes your hours, rebuild it, then keep it running.">
+    <Section id="method" n="02" title="An engineer inside your business" note="No handoffs, no black box. One engineer learns how your business runs, stays through the build and comes back for the launch.">
       <ol class="method">
         {method.map((m) => (
           <li>
-            <span class="sec-num">{m.n}</span>
+            <span class="step"><span class="sec-num">{m.n}</span> {m.step}</span>
             <h3>{m.t}</h3>
             <p>{m.d}</p>
           </li>
@@ -83,6 +85,19 @@ const quoted = work.find((p) => p.quote);
           <div><strong>Process before automation</strong><span>Audit · Fix · Run</span></div>
         </div>
       </div>
+    </Section>
+
+    <Section id="about" n="05" title="Small team. Serious software." note="The people you talk to on the first call are the people who build it.">
+      <ul class="team">
+        {team.map((m) => (
+          <li>
+            <span class="photo todo" aria-hidden="true">Photo</span>
+            <span class="name">{m.name}</span>
+            <span class="role"><V v={m.role} /></span>
+            <p><V v={m.bio} /></p>
+          </li>
+        ))}
+      </ul>
     </Section>
   </div>
 
@@ -125,6 +140,19 @@ const quoted = work.find((p) => p.quote);
   /* Method */
   .method { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px 16px; }
   .method li { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--line-quiet); padding-top: 14px; }
+  .step { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--graphite); }
+  .step .sec-num { margin-right: 6px; }
+
+  .who { font-size: 14px; line-height: 1.6; color: var(--muted); }
+  .who .eyebrow { margin-right: 10px; }
+
+  /* Team */
+  .team { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px 16px; }
+  .team li { display: flex; flex-direction: column; gap: 6px; }
+  .photo { aspect-ratio: 4 / 5; background: var(--ink); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
+  .name { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: -.02em; line-height: 1.05; }
+  .role { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--graphite); }
+  .team p { font-size: 14px; line-height: 1.55; color: var(--muted); text-wrap: pretty; }
   .method h3 { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: -.02em; line-height: 1.05; }
   .method p { font-size: 14px; line-height: 1.55; color: var(--muted); text-wrap: pretty; }
 

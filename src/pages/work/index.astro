@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Shot from '../../components/Shot.astro';
 import V from '../../components/V.astro';
 import Cta from '../../components/Cta.astro';
-import { work } from '../../data/work';
+import { work, moreWork } from '../../data/work';
 ---
 <Base title="Work · PixelMetrics" description="Software, websites and automation we built and still run. Listed by running since, not by launch date.">
   <div class="wrap">
@@ -37,6 +37,22 @@ import { work } from '../../data/work';
         </li>
       ))}
     </ol>
+
+    <section class="more" aria-labelledby="more-h">
+      <h2 id="more-h" class="eyebrow">More client work</h2>
+      <ul>
+        {moreWork.map((m) => (
+          <li>
+            <span class="more-client">{m.client}</span>
+            <span class="more-meta">{m.kind} · {m.place}</span>
+            <p><V v={m.d} /></p>
+            {typeof m.url === 'string'
+              ? <a href={m.url} rel="noopener">Visit site ↗</a>
+              : <span class="todo link">Visit site ↗ (link needed)</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
   </div>
 
   <div class="wrap-wide cta-wrap"><Cta /></div>
@@ -76,6 +92,14 @@ import { work } from '../../data/work';
     .facts { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); padding-top: 14px; }
     .facts > div:first-child { padding-left: 0; }
   }
+
+  .more { padding: 56px 0 0; display: flex; flex-direction: column; gap: 20px; }
+  .more ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px 40px; }
+  .more li { border-top: 1px solid var(--line-quiet); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .more-client { font-family: var(--serif); font-size: 26px; font-weight: 300; letter-spacing: -.02em; line-height: 1.05; }
+  .more-meta { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--graphite); }
+  .more p { font-size: 14px; line-height: 1.55; color: var(--muted); max-width: 52ch; }
+  .more a, .more .link { font-size: 14px; margin-top: 4px; }
 
   .cta-wrap { padding-top: 88px; padding-bottom: 120px; }
 </style>

@@ -1,6 +1,6 @@
 ---
 import Wordmark from './Wordmark.astro';
-import { EMAIL } from '../data/site';
+import { EMAIL, LOCATION } from '../data/site';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
@@ -14,11 +14,12 @@ const year = new Date().getFullYear();
         <a href="/#services">Services</a>
         <a href="/#method">Method</a>
         <a href="/work/">Work</a>
+        <a href="/#about">About</a>
         <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
       </nav>
     </div>
     <div class="legal">
-      <span>We build it. We run it.</span>
+      <span>{LOCATION}</span>
       <span class="metric">© {year} PixelMetrics</span>
     </div>
   </div>
