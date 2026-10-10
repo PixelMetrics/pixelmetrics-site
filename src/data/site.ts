@@ -1,4 +1,4 @@
-export const EMAIL = 'hello@pixelmetrics.co';
+export const EMAIL = 'hello@pixelmetrics.dev';
 export const BOOK_URL = `mailto:${EMAIL}?subject=${encodeURIComponent('30-min scoping call')}`;
 
 export const services = [

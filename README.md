@@ -33,8 +33,8 @@ npx astro check   # type check
 ## Before launch
 
 - Anything wrapped in `todo()` in `src/data/work.ts` renders with a dashed outline. None are left today.
-- **Booking**: CTAs open `mailto:hello@pixelmetrics.co` (`src/data/site.ts`). Swap `BOOK_URL` for a
+- **Booking**: CTAs open `mailto:hello@pixelmetrics.dev` (the mailbox still needs setting up) (`src/data/site.ts`). Swap `BOOK_URL` for a
   booking link when you have one.
 - **Fonts**: Newsreader and Hanken Grotesk from Google Fonts stand in for licensed type.
-- `site` in `astro.config.mjs` is set to `https://pixelmetrics.co`.
+- `site` in `astro.config.mjs` is set to `https://pixelmetrics.dev`.
 - No em dashes in the copy.
