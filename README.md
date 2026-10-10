@@ -22,7 +22,7 @@ npx astro check   # type check
 
 - **Tokens** (night, ink, D1 to D3, graphite, bone, lime) and shared patterns: `src/styles/global.css`
 - **Wordmark**: `src/components/Wordmark.astro`. The first i's dot is the lit pixel.
-- **One pixel effect: pixel in.** Screenshots build from coarse blocks to sharp, 90ms per step, once,
+- **One pixel effect: pixel in.** Screenshots build from coarse blocks to sharp over about 1.4 seconds, once,
   as they scroll into view (`src/components/Shot.astro` + `src/scripts/pixelate.ts`). It is the only
   pixel animation on the site; keep it that way so the site stays calm. It is skipped for visitors who
   turn off motion.

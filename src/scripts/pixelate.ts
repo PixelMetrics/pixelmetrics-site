@@ -1,10 +1,11 @@
 // Pixel in: the site's one pixel effect. A screenshot arrives as coarse
-// blocks that halve until the real image is there, 90ms per step, once,
-// when it scrolls into view. Wrap an <img> in an element with data-pixelate.
+// blocks that shrink until the real image is there, about 1.4s in all, once,
+// when it is a third of the way into view. Wrap an <img> in an element with data-pixelate.
 // The canvas copies the image's own crop (object-fit: cover, top-aligned).
 
-const STEP = 90;
-const BLOCKS = [48, 24, 12, 6, 3];
+const STEP = 200;                          // ms per step
+const BLOCKS = [64, 40, 24, 16, 10, 6, 3]; // block size in px at each step
+const FIRST_SCREEN_DELAY = 300;            // let the page settle before the top image starts
 
 function paint(img: HTMLImageElement, c: HTMLCanvasElement, block: number) {
   const w = img.clientWidth, h = img.clientHeight;
@@ -39,8 +40,10 @@ function run(box: HTMLElement) {
     c.style.left = img.offsetLeft + 'px';
     c.style.top = img.offsetTop + 'px';
     box.appendChild(c);
-    BLOCKS.forEach((b, i) => setTimeout(() => paint(img, c, b), i * STEP));
-    setTimeout(() => { box.classList.add('is-pixeled'); c.remove(); }, BLOCKS.length * STEP);
+    paint(img, c, BLOCKS[0]);
+    const wait = performance.now() < 1500 ? FIRST_SCREEN_DELAY : 0;
+    BLOCKS.slice(1).forEach((b, i) => setTimeout(() => paint(img, c, b), wait + (i + 1) * STEP));
+    setTimeout(() => { box.classList.add('is-pixeled'); c.remove(); }, wait + BLOCKS.length * STEP);
   };
   if (img.complete && img.naturalWidth) start();
   else {
@@ -61,6 +64,6 @@ if (reduce || !('IntersectionObserver' in window)) {
       io.unobserve(e.target);
       run(e.target as HTMLElement);
     }
-  }, { rootMargin: '0px 0px -10% 0px' });
+  }, { threshold: 0.35 });
   boxes.forEach((b) => io.observe(b));
 }
